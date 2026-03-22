@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+    html,
+    body {
+      overflow-x: hidden;
+    }
+
+    #PaintingH1 {
+      font-size: 4.5rem;
+    }
+
+    body {
+      background-color: #FAF3EB;
+      font-family: 'Sofia Sans', sans-serif;
+    }
+
+    .bg-wine {
+      background-color: #914E59;
+    }
+
+    .text-wine {
+      color: #914E59;
+    }
+
+    .bg-pink {
+      background-color: #F5D0DC;
+    }
+
+    .bg-purple {
+      background-color: #D5DBF8;
+    }
+
+    .rounded-xl {
+      border-radius: 25%;
+    }
+
+    .rounded-md {
+      border-radius: 6%;
+    }
+
+    .card-hover:hover {
+      transform: scale(1.1);
+      transition: 0.2s ease;
+      overflow: hidden;
+    }
+
+    .card-img-top {
+      border-radius: 8%;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      transition: 0.2s ease;
+      overflow: hidden;
+    }
+
+    @media (max-width: 700px) {
+      #PaintingH1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="bg-wine py-3 d-flex justify-content-center">
+    <img src="./photos/logo1.png" alt="logo" style="width:240px; height:87px;">
+  </header>
+
+  <section class="d-flex flex-column flex-md-row bg-wine">
+    <aside class="pe-3 py-3">
+      <ul class="list-unstyled d-flex flex-md-column flex-row gap-4 ps-md-3 pt-md-4 justify-content-center">
+        <li><a href="SaveHour.html" class="text-light fw-bold fs-5 text-decoration-none">Запази час</a></li>
+        <li><a href="information.html" class="text-light fw-bold fs-5 text-decoration-none">Информация</a></li>
+        <li><a href="Gallery.html" class="text-light fw-bold fs-5 text-decoration-none">Галерия</a></li>
+      </ul>
+    </aside>
+    <div class="position-relative w-100">
+      <img src="./photos/whiteGradient.png" alt="gradient" class="position-absolute w-100 h-100 object-fit-cover">
+      <img src="./photos/hero1.png" alt="Hero Image" class="img-fluid w-100 object-fit-cover">
+      <div class="position-absolute" style="top:150px; left:0; padding-left:5%;">
+        <h1 id="PaintingH1" class="fw-bold text-dark d-none d-xxl-block">РИСУВАНЕ С ВИНО
+        </h1>
+        <p class="text-dark d-none d-xxl-block" style="font-size:1.5rem;">Създавай спомени с всяка
+          линия <br>и всяка капка</p>
+        <a href="SaveHour.html" class="btn rounded-md text-light mt-3 mt-sm-1 mt-xs-1 d-none d-xxl-block"
+          style="background-color:#914E59; font-size:1.5rem;">Запази час</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5">
+    <h1 class="text-center fw-bold text-dark mb-5" style="font-size:2.5rem;">Създай незабравими спомени <br> с нашите
+      събития</h1>
+    <div class="container">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-5 mb-5">
+        <div class="col">
+          <div class="card bg-pink p-3 card-hover h-100">
+            <img src="./photos/couple1.jpg" class="card-img-top mb-3" alt="couple1">
+            <h3 class="text-center fw-bold">Среща за влюбени</h3>
+            <p>Перфектната идея за среща, която ще запомните! Създайте заедно едно платно, отпийте хубаво вино и
+              оставете емоциите да водят четката. Насладете се на вечер изпълнена с романтика, усмивки и споделени
+              мигове. </p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card bg-purple p-3 card-hover h-100">
+            <img src="./photos/women1.jpg" class="card-img-top mb-3" alt="women1">
+            <h3 class="text-center fw-bold fs-2">Вечер по женски</h3>
+            <p>Съберете най-близките си приятелки за една вечер, изпълнена с смях, вино и творчество! Забравете стреса,
+              облечете любимата си рокля и се потопете в света на цветовете.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card bg-purple p-3 card-hover h-100">
+            <img src="./photos/friends1.jpg" class="card-img-top mb-3" alt="friends1">
+            <h3 class="text-center fw-bold fs-2">Събитие с приятели</h3>
+            <p>Съберете компанията за една по-различна вечер – с чаша вино и четка в ръка. Без нужда от опит – просто
+              добро настроение, музика и творчество! Перфектно за рождени дни, поводи или просто бягство от скуката.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card bg-pink p-3 card-hover h-100">
+            <img src="./photos/family1.jpg" class="card-img-top mb-3" alt="family1">
+            <h3 class="text-center fw-bold fs-2">Семейно събитие</h3>
+            <p>Изкуство, смях и общо време с любимите хора! Нашето семейно събитие е перфектната възможност родители и
+              деца да творят заедно, да се свържат чрез цвят и въображение и да създадат спомени, които остават.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card bg-pink p-3 card-hover h-100">
+            <img src="./photos/children1.jpg" class="card-img-top mb-3" alt="child1">
+            <h3 class="text-center fw-bold fs-2">За малките художници</h3>
+            <p>Цветна работилничка за най-малките творци! Под ръководството на нашите водещи, децата ще се забавляват и
+              ще рисуват. Подходящо за рожден ден или просто творчески следобед. Без вино, но с много усмивки!</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card bg-purple p-3 card-hover h-100">
+            <img src="./photos/teambulding1.jpg" class="card-img-top mb-3" alt="team1">
+            <h3 class="text-center fw-bold fs-2">Работна среща</h3>
+            <p>Забравете PowerPoint-а – време е за четки и вдъхновение! Идеално за колективи, които искат да се свържат
+              по нов начин. Изкуството обединява, разтоварва и отпуска.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5 bg-light position-relative pt-0 mb-5">
+    <img src="./photos/handsNew.png" alt="hands" class="position-absolute w-100 h-100 object-fit-cover mb-3">
+    <div class="position-relative text-center container">
+      <h1 class="fw-bold text-dark pt-5" style="font-size:2.5rem;">Планираш събитие?</h1>
+      <p class="fs-5 text-dark">Искаш нещо различно, цветно и незабравимо?<br>При нас всяка идея оживява върху платно.
+      </p>
+      <div class="row justify-content-center mt-4 gap-1">
+        <div class="col-md-4">
+          <h1 class="fw-bold text-wine" style="font-size:4rem;">50+</h1>
+          <p class="fw-bold fs-5">Уникални теми за рисуване</p>
+        </div>
+        <div class="col-md-4">
+          <h1 class="fw-bold text-wine" style="font-size:4rem;">10+</h1>
+          <p class="fw-bold fs-5">Вдъхновяващи художници</p>
+        </div>
+        <div class="col-md-4">
+          <h1 class="fw-bold text-wine" style="font-size:4rem;">100%</h1>
+          <p class="fw-bold fs-5">Гарантирано добро настроение</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5 mt-5">
+    <h1 class="text-center fw-bold text-dark mb-4" style="font-size:2.5rem;">Екип от професионалисти</h1>
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4 mt-5">
+        <div class="col">
+          <div class="card h-100 text-center align-items-end bg-pink border-0 rounded-xl p-3">
+            <div class="card-body">
+              <p class="fw-bold mb-1 fs-4">Анна Кирилова<br><span class="fw-normal fs-5">Креативен директор</span></p>
+              <img src="./photos/team1.png" class="img-fluid rounded-4 mt-5" alt="team1">
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 text-center bg-dark text-light border-0 rounded-xl p-3">
+            <div class="card-body">
+              <p class="fw-bold mb-3 fs-4">Христо Лалев<br><span class="fw-normal fs-5">Събития и координация</span></p>
+              <img src="./photos/team2.png" class="img-fluid rounded-4 mt-5" style="filter: grayscale(100);"
+                alt="team2">
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 text-center bg-purple border-0 rounded-xl p-3">
+            <div class="card-body">
+              <p class="fw-bold mb-3 fs-4">Катерина Ненчева<br><span class="fw-normal  fs-5">Водещ на детски
+                  партита</span></p>
+              <img src="./photos/team3.png" class="img-fluid rounded-4 grayscale mt-3" style="filter: grayscale(100);"
+                alt="team3">
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 text-center bg-wine text-light border-0 rounded-xl p-3">
+            <div class="card-body">
+              <p class="fw-bold mb-3 fs-4">Николай Стоянов<br><span class="fw-normal  fs-5">Арт водещ / Художник</span>
+              </p>
+              <img src="./photos/team4.png" class="img-fluid rounded-4 grayscale mt-5" alt="team4">
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 text-center bg-dark text-light border-0 rounded-xl p-3">
+            <div class="card-body">
+              <p class="fw-bold mb-3 fs-4">Рая Димитрова<br><span class="fw-normal  fs-5">Арт водещ / Художник</span>
+              </p>
+              <img src="./photos/team5.png" class="img-fluid rounded-4 mt-5" alt="team5">
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 text-center bg-pink border-0 rounded-xl p-3">
+            <div class="card-body">
+              <p class="fw-bold mb-3 fs-4">Лазар Христов<br><span class="fw-normal  fs-5">DJ & аудио настроение</span>
+              </p>
+              <img src="./photos/team6.png" class="img-fluid rounded-4 mt-5" style="filter: grayscale(100);"
+                alt="team6">
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 text-center bg-wine text-light border-0 rounded-xl p-3">
+            <div class="card-body">
+              <p class="fw-bold mb-3 fs-4">Огнян Желев<br><span class="fw-normal  fs-5">Старши художник/Сомелиер</span>
+              </p>
+              <img src="./photos/team7.png" class="img-fluid rounded-4 grayscale mt-5" alt="team7">
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 text-center bg-purple border-0 rounded-xl p-3">
+            <div class="card-body">
+              <p class="fw-bold mb-3 fs-4">Елица Ангелова<br><span class="fw-normal  fs-5">Фотограф/Арт водещ</span></p>
+              <img src="./photos/team8.png" class="img-fluid rounded-4 mt-5" style="filter: grayscale(100);"
+                alt="team8">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="my-5 p-5">
+    <div class="container bg-purple rounded shadow p-5">
+      <div class="row g-4 align-items-center">
+        <div class="col-md-6">
+          <h2 class="fw-bold text-dark" style="font-size:2.5rem;">Запази си час!</h2>
+          <p class="fs-6 text-dark">Пусни въображението си на воля!Запази своето място за вечер, пълна с цвят,
+            вдъхновение и хубаво вино. Независимо дали си начинаещ или опитен художник – при нас най-важното е да се
+            забавляваш! Регистрирай се сега и създай своето собствено произведение на изкуството!
+          </p>
+          <p class="text-wine fw-bold">paintingwithwine@gmail.com</p>
+          <p class="text-wine fw-bold">+(359) 573-3085</p>
+          <img src="./photos/spiledwine.png" class="img-fluid" alt="wine" style="width:256px; margin-top: 20%;">
+        </div>
+        <div class="col-md-6">
+          <form>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Име</label>
+                <input type="text" class="form-control border-wine" placeholder="Вашето име">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Фамилия</label>
+                <input type="text" class="form-control border-wine" placeholder="Вашата фамилия">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Телефон</label>
+                <input type="text" class="form-control border-wine" placeholder="Вашият телефонен номер">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control border-wine" placeholder="Вашата ел. поща">
+              </div>
+              <div class="col-12">
+                <label class="form-label">Вид събитие</label>
+                <select class="form-select border-wine">
+                  <option>Изберете</option>
+                  <option>Среща за влюбени</option>
+                  <option>Вечер по женски</option>
+                  <option>Събитие с приятели</option>
+                  <option>Семейно събитие</option>
+                  <option>За малките художници</option>
+                  <option>Работна среща</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Бележки</label>
+                <textarea class="form-control border-wine" rows="4" placeholder="Напишете въпросите си"></textarea>
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="termsagree">
+                  <label class="form-check-label" for="termsagree">Съгласявам се с условията</label>
+                </div>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn text-light mt-3"
+                  style="background-color:#914E59; font-size:1.25rem;">Изпрати</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer
+    class="bg-wine text-light d-flex flex-column flex-md-row justify-content-between align-items-center px-4 py-4">
+    <div class="text-center mb-3 mb-md-0">
+      <h2 class="fs-3 fw-bold">РИСУВАНЕ <br>С ВИНО</h2>
+    </div>
+    <div class="text-center">
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <a href="#" class="text-light text-decoration-none">Начална страница</a>
+        <a href="#" class="text-light text-decoration-none">Запази час</a>
+        <a href="#" class="text-light text-decoration-none">Информация</a>
+        <a href="#" class="text-light text-decoration-none">Галерия</a>
+      </div>
+      <hr class="bg-light my-2">
+      <div class="d-flex flex-wrap justify-content-center gap-4 small">
+        <p class="mb-0">Privacy Policy</p>
+        <p class="mb-0">© 2025 Relume. All rights reserved.</p>
+        <p class="mb-0">Terms of Service</p>
+        <p class="mb-0">Cookies Settings</p>
+      </div>
+    </div>
+    <div class="text-center mt-3 mt-md-0">
+      <img src="./photos/logo1.png" style="width:200px;" alt="logo">
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

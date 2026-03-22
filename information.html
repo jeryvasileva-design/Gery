@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+    <title>Information</title>
+    <style>
+        html,
+        body {
+            overflow-x: hidden;
+        }
+
+        body {
+            background-color: #FAF3EB;
+            font-family: 'Sofia Sans', sans-serif;
+        }
+
+        .bg-wine {
+            background-color: #914E59;
+        }
+
+        .text-wine {
+            color: #914E59;
+        }
+
+        .bg-pink {
+            background-color: #F5D0DC;
+        }
+
+        .bg-purple {
+            background-color: #D5DBF8;
+        }
+
+        .rounded-xl {
+            border-radius: 25%;
+        }
+
+        .rounded-md {
+            border-radius: 6%;
+        }
+
+        .painting-hover {
+            filter: grayscale(100%);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .painting-hover:hover {
+            filter: grayscale(0%);
+        }
+
+        .card-img-top {
+            border-radius: 8%;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="bg-wine py-3 d-flex justify-content-center">
+        <a href="index.html"> <img src="./photos/logo1.png" alt="logo" style="width:240px; height:87px;"></a>
+    </header>
+
+    <section class="d-flex flex-column flex-md-row bg-wine">
+        <aside class="pe-3 py-3">
+            <ul class="list-unstyled d-flex flex-md-column flex-row gap-4 ps-md-3 pt-md-4 justify-content-center">
+                <li><a href="index.html" class="text-light fw-bold fs-5 text-decoration-none">Начална страница</a></li>
+                <li><a href="SaveHour.html" class="text-light fw-bold fs-5 text-decoration-none">Запази час</a></li>
+                <li><a href="Gallery.html" class="text-light fw-bold fs-5 text-decoration-none">Галерия</a></li>
+            </ul>
+        </aside>
+        <div class="position-relative w-100">
+            <img src="./photos/gradient2.png" alt="gradient" class="position-absolute w-100 h-100 object-fit-cover">
+            <img src="./photos/hero2.jpg" alt="Hero Image" class="img-fluid w-100 object-fit-cover">
+            <div class="position-absolute"
+                style="top:150px; left:0; padding-left:5%; text-align: end; margin-left: 40%; margin-top: 5%;">
+                <h1 class="fw-bold text-dark d-sm-none d-md-flex d-none d-sm-block" style="font-size:4.5rem;">РИСУВАНЕ С
+                    ВИНО</h1>
+                <p class="text-dark d-sm-none d-md-flex d-none d-sm-block" style="font-size:1.5rem;">Разгледай нашата
+                    колекция от <br> вдъхновяващи теми и
+                    избери
+                    онази,<br> която те кара да посегнеш към четката. </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-5 mb-4">
+        <div class="d-inline-block justify-content-center">
+            <h1 class="col-12 d-flex justify-content-center fw-bold fs-1"> Нашите теми</h1>
+            <p class="col-12 d-flex justify-content-center fs-5" style="text-align: center; margin-top: 2%;"> Това са
+                част от темите, които предлагаме. На живо имате право на избор от тези, още други или картина,
+                която вие предварително сте си харесали. Избора от картините ни се обновява всеки месец.</p>
+        </div>
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5 mb-5 mt-4">
+                <div class="col">
+                    <div class="card d-flex justify-content-center ps-3 rounded-3 bg-pink pt-3 pe-3 pb-3">
+                        <img src="./photos/painting1.jpg" class="rounded-3 w-60 painting-hover" alt="painting1">
+                        <h5 class="text-center fw-bold mt-3 fs-3">"С аромат на роза"</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card d-flex justify-content-center ps-3 rounded-3 bg-pink pt-3 pe-3 pb-3">
+                        <img src="./photos/painting2.jpg" class="rounded-3 w-60 painting-hover" alt="painting2">
+                        <h5 class="text-center fw-bold mt-3 fs-3">"Лакомо за мляко"</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card d-flex justify-content-center ps-3 rounded-3 bg-pink pt-3 pe-3 pb-3">
+                        <img src="./photos/painting3.jpg" class="rounded-3 w-60 painting-hover" alt="painting3">
+                        <h5 class="text-center fw-bold mt-3 fs-3">"Лебедово езеро"</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card d-flex justify-content-center ps-3 rounded-3 bg-purple pt-3 pe-3 pb-3">
+                        <img src="./photos/painting4.jpg" class="rounded-3 w-60 painting-hover" alt="painting4">
+                        <h5 class="text-center fw-bold mt-3 fs-3">"Слънчеви полета"</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card d-flex justify-content-center ps-3 rounded-3 bg-purple pt-3 pe-3 pb-3">
+                        <img src="./photos/painting5.jpg" class="rounded-3 w-60 painting-hover" alt="painting5">
+                        <h5 class="text-center fw-bold mt-3 fs-3">"Писанче"</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card d-flex justify-content-center ps-3 rounded-3 bg-purple pt-3 pe-3 pb-3">
+                        <img src="./photos/painting6.jpg" class="rounded-3 w-60 painting-hover" alt="painting6">
+                        <h5 class="text-center fw-bold mt-3 fs-3">"Сюреалистичен сън"</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card d-flex justify-content-center ps-3 rounded-3 bg-pink pt-3 pe-3 pb-3">
+                        <img src="./photos/painting7.jpg" class="rounded-3 w-60 painting-hover" alt="painting7">
+                        <h5 class="text-center fw-bold mt-3 fs-3">"Кокона"</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card d-flex justify-content-center ps-3 rounded-3 bg-pink pt-3 pe-3 pb-3">
+                        <img src="./photos/painting8.jpg" class="rounded-3 w-60 painting-hover" alt="painting8">
+                        <h5 class="text-center fw-bold mt-3 fs-3">"На по чаша вино"</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card d-flex justify-content-center ps-3 rounded-3 bg-pink pt-3 pe-3 pb-3">
+                        <img src="./photos/painting9.jpg" class="rounded-3 w-60 painting-hover" alt="painting9">
+                        <h5 class="text-center fw-bold mt-3 fs-3">"Виждам в рози"</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card d-flex justify-content-center ps-3 rounded-3 bg-purple pt-3 pe-3 pb-3">
+                        <img src="./photos/painting10.jpg" class="rounded-3 w-60 painting-hover" alt="painting10">
+                        <h5 class="text-center fw-bold mt-3 fs-3">"Парче ябълка?"</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card d-flex justify-content-center ps-3 rounded-3 bg-purple pt-3 pe-3 pb-3">
+                        <img src="./photos/painting11.jfif" class="rounded-3 w-60 painting-hover" alt="painting11">
+                        <h5 class="text-center fw-bold mt-3 fs-3">"Рибки плуват"</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card d-flex justify-content-center ps-3 rounded-3 bg-purple pt-3 pe-3 pb-3">
+                        <img src="./photos/painting12.jfif" class="rounded-3 w-60 painting-hover" alt="painting12">
+                        <h5 class="text-center fw-bold mt-3 fs-3">"Скрито в лавандула"</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-5 ">
+        <div class="container ">
+            <h1 class="col-12 d-flex justify-content-center fw-bold fs-1">Повече за нас</h1>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-5 mb-5 mt-4">
+                <div class="col">
+                    <h5 class="fw-bold">Wine Painting: Изкуство. Вино. Емоция.</h5>
+                    <p>
+                        Ние вярваме, че всеки човек е творец – стига да му се даде чаша вино и четка в ръка.
+                        Wine painting е мястото, където се събират вдъхновението, смехът и креативността. Създадохме
+                        това
+                        пространство, за да предложим не просто рисуване, а изживяване – различно, вълнуващо и запомнящо
+                        се.
+                    </p>
+                </div>
+                <div class="col">
+                    <h5 class="fw-bold">Защо да ни избереш?</h5>
+                    <p>
+                        Персонално отношение към всяка група
+                        Талантливи и вдъхновяващи арт водещи
+                        Уютна атмосфера и красиви спомени
+                        Подходящо както за забавление, така и за специални поводи. Независимо дали идваш сам, с приятел,
+                        с половинката или с целия екип – при нас ще откриеш вдъхновение и истинска радост от
+                        творчеството.
+                    </p>
+                </div>
+            </div>
+            <img class="img-fluid d-flex d-none d-sm-block" src="./photos/spiledWineRef.png"
+                style="width:256px;margin-left: 80%; " alt="wine">
+        </div>
+    </section>
+
+    <footer
+        class="bg-wine text-light d-flex flex-column flex-md-row justify-content-between align-items-center px-4 py-4">
+        <div class="text-center mb-3 mb-md-0">
+            <h2 class="fs-3 fw-bold">РИСУВАНЕ <br>С ВИНО</h2>
+        </div>
+        <div class="text-center">
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a href="#" class="text-light text-decoration-none">Начална страница</a>
+                <a href="#" class="text-light text-decoration-none">Запази час</a>
+                <a href="#" class="text-light text-decoration-none">Информация</a>
+                <a href="#" class="text-light text-decoration-none">Галерия</a>
+            </div>
+            <hr class="bg-light my-2">
+            <div class="d-flex flex-wrap justify-content-center gap-4 small">
+                <p class="mb-0">Privacy Policy</p>
+                <p class="mb-0">© 2025 Relume. All rights reserved.</p>
+                <p class="mb-0">Terms of Service</p>
+                <p class="mb-0">Cookies Settings</p>
+            </div>
+        </div>
+        <div class="text-center mt-3 mt-md-0">
+            <img src="./photos/logo1.png" style="width:200px;" alt="logo">
+        </div>
+    </footer>
+</body>
+
+</html>
