@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="bg">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход и Регистрация</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #FAF3EB;
+            font-family: 'Sofia Sans', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .bg-wine {
+            background-color: #914E59;
+        }
+
+        .text-wine {
+            color: #914E59;
+        }
+
+        .form-control-underline {
+            border: none;
+            border-bottom: 1px solid #ccc;
+            border-radius: 0;
+            background-color: transparent;
+            padding-left: 0;
+        }
+
+        .flip-main-container {
+            perspective: 2000px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0;
+        }
+
+        .flip-card-inner {
+            width: 1000px;
+            max-width: 95%;
+            height: 650px;
+            position: relative;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .is-flipped {
+            transform: rotateY(180deg);
+        }
+
+        .auth-side {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .auth-back {
+            transform: rotateY(180deg);
+        }
+
+        .side-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .btn-custom {
+            background-color: #914E59;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 6px;
+            border: none;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            transition: 0.2s ease;
+            overflow: hidden;
+            background-color: #914E59;
+            color: #FAF3EB;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="bg-wine py-3 d-flex justify-content-around">
+        <div class="pe-3 py-3">
+            <a href="index.html"><img src="./photos/logo1.png" alt="logo" style="width:240px; height:87px;"></a>
+        </div>
+        <div class="pe-3 py-3">
+            <ul class="list-unstyled d-flex flex-row gap-5 ps-md-3 pt-md-4 justify-content-center">
+                <li><a href="SaveHour.html" class="text-light fw-bold fs-5 text-decoration-none">Запази час</a></li>
+                <li><a href="information.html" class="text-light fw-bold fs-5 text-decoration-none">Информация</a></li>
+                <li><a href="Gallery.html" class="text-light fw-bold fs-5 text-decoration-none">Галерия</a></li>
+                <li><a href="account.html" class="text-light fw-bold fs-5 text-decoration-none">Профил</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="flip-main-container">
+        <div class="flip-card-inner" id="flipCard">
+
+            <div class="auth-side auth-front">
+                <div class="row g-0 h-100">
+                    <div class="col-md-5 d-none d-md-block">
+                        <img src="./photos/loginPhoto.jpg" class="side-img" alt="Login">
+                    </div>
+                    <div class="col-md-7 p-5 d-flex flex-column justify-content-center"
+                        style="background-color: #FAF3EB;">
+                        <h2 class="fw-bold text-dark display-6 mb-5">Здравейте отново!</h2>
+                        <form>
+                            <div class="mb-4">
+                                <label class="fw-bold">Имейл</label>
+                                <input type="email" class="form-control form-control-underline"
+                                    placeholder="Вашият имейл">
+                            </div>
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between">
+                                    <label class=" fw-bold">Парола</label>
+                                    <a href="#" class="small text-decoration-none text-muted">Забравена парола?</a>
+                                </div>
+                                <input type="password" class="form-control form-control-underline"
+                                    placeholder="••••••••">
+                            </div>
+                            <button type="submit" class="btn btn-custom mt-3">Вход в профил</button>
+                            <div class="mt-5 text-center">
+                                <p class="text-muted small">Нямате акаунт?
+                                    <a href="javascript:void(0)" onclick="toggleFlip()"
+                                        class="text-wine fw-bold text-decoration-none ms-1 border-bottom border-dark">Регистрация</a>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="auth-side auth-back">
+                <div class="row g-0 h-100">
+                    <div class="col-md-7 p-5 d-flex flex-column justify-content-center"
+                        style="background-color: #FAF3EB;">
+                        <h2 class="fw-bold text-dark display-6 mb-5">Регистрирай се за незабравими преживявания!</h2>
+                        <form>
+                            <div class="mb-4">
+                                <label class="fw-bold">Име и фамилия</label>
+                                <input type="text" class="form-control form-control-underline" placeholder="Вашето име">
+                            </div>
+                            <div class="mb-4">
+                                <label class="fw-bold">Email</label>
+                                <input type="email" class="form-control form-control-underline"
+                                    placeholder="Вашият имейл">
+                            </div>
+                            <div class="mb-4">
+                                <label class="fw-bold">Парола</label>
+                                <input type="password" class="form-control form-control-underline"
+                                    placeholder="••••••••">
+                            </div>
+                            <button type="submit" class="btn btn-custom mt-3">Регистрирай се</button>
+                            <div class="mt-5 text-center">
+                                <p class="text-muted small">Вече имате профил?
+                                    <a href="javascript:void(0)" onclick="toggleFlip()"
+                                        class="text-wine fw-bold text-decoration-none ms-1 border-bottom border-dark">Влез
+                                        в акаунт</a>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-5 d-none d-md-block">
+                        <img src="./photos/signPhoto.jpg" class="side-img" alt="Register">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function toggleFlip() {
+            document.getElementById('flipCard').classList.toggle('is-flipped');
+        }
+    </script>
+</body>
+
+</html>

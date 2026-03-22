@@ -58,41 +58,45 @@
 </head>
 
 <body>
-    <header class="bg-wine py-3 d-flex justify-content-center">
-        <a href="index.html"> <img src="./photos/logo1.png" alt="logo" style="width:240px; height:87px;"></a>
-    </header>
+   <header class="bg-wine py-3 d-flex justify-content-around">
+    <div class="pe-3 py-3">
+ <a href="index.html" ><img src="./photos/logo1.png" alt="logo" style="width:240px; height:87px;"></a>
+    </div>
+    <div class="pe-3 py-3">
+      <ul class="list-unstyled d-flex flex-row gap-5 ps-md-3 pt-md-4 justify-content-center">
+        <li><a href="SaveHour.html" class="text-light fw-bold fs-5 text-decoration-none">Запази час</a></li>
+        <li><a href="Gallery.html" class="text-light fw-bold fs-5 text-decoration-none">Галерия</a></li>
+        <li><a href="login.html" class="text-light fw-bold fs-5 text-decoration-none">Регистрация</a></li>
+        <li><a href="account.html" class="text-light fw-bold fs-5 text-decoration-none">Профил</a></li>
+      </ul>
+    </div>
+  </header>
 
     <section class="d-flex flex-column flex-md-row bg-wine">
-        <aside class="pe-3 py-3">
-            <ul class="list-unstyled d-flex flex-md-column flex-row gap-4 ps-md-3 pt-md-4 justify-content-center">
-                <li><a href="index.html" class="text-light fw-bold fs-5 text-decoration-none">Начална страница</a></li>
-                <li><a href="SaveHour.html" class="text-light fw-bold fs-5 text-decoration-none">Запази час</a></li>
-                <li><a href="Gallery.html" class="text-light fw-bold fs-5 text-decoration-none">Галерия</a></li>
-            </ul>
-        </aside>
-        <div class="position-relative w-100">
-            <img src="./photos/gradient2.png" alt="gradient" class="position-absolute w-100 h-100 object-fit-cover">
-            <img src="./photos/hero2.jpg" alt="Hero Image" class="img-fluid w-100 object-fit-cover">
-            <div class="position-absolute"
-                style="top:150px; left:0; padding-left:5%; text-align: end; margin-left: 40%; margin-top: 5%;">
-                <h1 class="fw-bold text-dark d-sm-none d-md-flex d-none d-sm-block" style="font-size:4.5rem;">РИСУВАНЕ С
-                    ВИНО</h1>
-                <p class="text-dark d-sm-none d-md-flex d-none d-sm-block" style="font-size:1.5rem;">Разгледай нашата
-                    колекция от <br> вдъхновяващи теми и
-                    избери
-                    онази,<br> която те кара да посегнеш към четката. </p>
-            </div>
+    <div class="position-relative w-100">
+        <img src="./photos/gradient2.png" alt="gradient" class="position-absolute w-100 h-100 object-fit-cover">
+        <img src="./photos/hero2.jpg" alt="Hero Image" class="img-fluid w-100 object-fit-cover">
+        <div class="position-absolute translate-middle-y" 
+             style="top: 40%; right: 5%; text-align: right; max-width: 50%;">
+            <h1 class="fw-bold text-dark d-none d-md-block" style="font-size: 4.5rem;">
+                РИСУВАНЕ С ВИНО
+            </h1>
+            <p class="text-dark d-none d-md-block" style="font-size: 1.5rem;">
+                Разгледай нашата колекция от вдъхновяващи теми и избери онази, 
+                която те кара да посегнеш към четката.
+            </p>
         </div>
-    </section>
+    </div>
+</section>
 
     <section class="mt-5 mb-4">
         <div class="d-inline-block justify-content-center">
-            <h1 class="col-12 d-flex justify-content-center fw-bold fs-1"> Нашите теми</h1>
-            <p class="col-12 d-flex justify-content-center fs-5" style="text-align: center; margin-top: 2%;"> Това са
+            <h1 class="col-12 d-flex justify-content-center fw-bold " style="font-size: 50px;" > Нашите теми</h1>
+            <p class="col-12 d-flex justify-content-center fs-5" style="text-align: center; padding: 2%;"> Това са
                 част от темите, които предлагаме. На живо имате право на избор от тези, още други или картина,
                 която вие предварително сте си харесали. Избора от картините ни се обновява всеки месец.</p>
         </div>
-        <div class="container">
+        <div class="container" style="margin-bottom: 8%;">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5 mb-5 mt-4">
                 <div class="col">
                     <div class="card d-flex justify-content-center ps-3 rounded-3 bg-pink pt-3 pe-3 pb-3">
@@ -166,7 +170,42 @@
                         <h5 class="text-center fw-bold mt-3 fs-3">"Скрито в лавандула"</h5>
                     </div>
                 </div>
+                 <div class="col">
+                    <div class="card d-flex justify-content-center ps-3 rounded-3 bg-pink pt-3 pe-3 pb-3">
+                        <img src="./photos/painting13.jpg" class="rounded-3 w-60 painting-hover" alt="painting7">
+                        <h5 class="text-center fw-bold mt-3 fs-3">"Код червено"</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card d-flex justify-content-center ps-3 rounded-3 bg-pink pt-3 pe-3 pb-3">
+                        <img src="./photos/painting14.jpg" class="rounded-3 w-60 painting-hover" alt="painting8">
+                        <h5 class="text-center fw-bold mt-3 fs-3">"Студент в сесия"</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card d-flex justify-content-center ps-3 rounded-3 bg-pink pt-3 pe-3 pb-3">
+                        <img src="./photos/painting15.jpg" class="rounded-3 w-60 painting-hover" alt="painting9">
+                        <h5 class="text-center fw-bold mt-3 fs-3">"Пролет"</h5>
+                    </div>    
             </div>
+           <div class="col">
+                    <div class="card d-flex justify-content-center ps-3 rounded-3 bg-purple pt-3 pe-3 pb-3">
+                        <img src="./photos/painting16.jpg" class="rounded-3 w-60 painting-hover" alt="painting10">
+                        <h5 class="text-center fw-bold mt-3 fs-3">"В твойте ръце"</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card d-flex justify-content-center ps-3 rounded-3 bg-purple pt-3 pe-3 pb-3">
+                        <img src="./photos/painting17.jpg" class="rounded-3 w-60 painting-hover" alt="painting11">
+                        <h5 class="text-center fw-bold mt-3 fs-3">"Сладка награда"</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card d-flex justify-content-center ps-3 rounded-3 bg-purple pt-3 pe-3 pb-3">
+                        <img src="./photos/painting18.jpg" class="rounded-3 w-60 painting-hover" alt="painting12">
+                        <h5 class="text-center fw-bold mt-3 fs-3">"Дете на Бог"</h5>
+                    </div>
+                </div>   
         </div>
     </section>
 

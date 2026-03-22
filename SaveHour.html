@@ -40,16 +40,27 @@
 </head>
 
 <body>
-    <header class="bg-wine py-3 d-flex justify-content-center">
-        <a href="index.html"> <img src="./photos/logo1.png" alt="logo" style="width:240px; height:87px;"></a>
+    <header class="bg-wine py-3 d-flex justify-content-around">
+        <div class="pe-3 py-3">
+            <a href="index.html"><img src="./photos/logo1.png" alt="logo" style="width:240px; height:87px;"></a>
+        </div>
+        <div class="pe-3 py-3">
+            <ul class="list-unstyled d-flex flex-row gap-5 ps-md-3 pt-md-4 justify-content-center">
+                <li><a href="information.html" class="text-light fw-bold fs-5 text-decoration-none">Информация</a></li>
+                <li><a href="Gallery.html" class="text-light fw-bold fs-5 text-decoration-none">Галерия</a></li>
+                <li><a href="login.html" class="text-light fw-bold fs-5 text-decoration-none">Регистрация</a></li>
+                <li><a href="account.html" class="text-light fw-bold fs-5 text-decoration-none">Профил</a></li>
+            </ul>
+        </div>
     </header>
 
     <section class="my-5 p-5">
         <div class="container bg-purple rounded shadow p-5">
             <div class="row g-4 align-items-center">
                 <div class="col-md-6">
-                    <h2 class="fw-bold text-dark" style="font-size:2.5rem;">Запази си час!</h2>
-                    <p class="fs-6 text-dark">Пусни въображението си на воля!Запази своето място за вечер, пълна с цвят,
+                    <h2 class="fw-bold text-dark" style="font-size:2.5rem; padding-bottom: 1%;">Запази си час!</h2>
+                    <p class="text-dark" style="font-size: 18px;">Пусни въображението си на воля!Запази своето място за
+                        вечер, пълна с цвят,
                         вдъхновение и хубаво вино. Независимо дали си начинаещ или опитен художник – при нас най-важното
                         е да се
                         забавляваш! Регистрирай се сега и създай своето собствено произведение на изкуството!
@@ -79,7 +90,7 @@
                                 <label class="form-label">Email</label>
                                 <input type="email" class="form-control border-wine" placeholder="Вашата ел. поща">
                             </div>
-                            <div class="col-12">
+                            <div class="col-md-6">
                                 <label class="form-label">Вид събитие</label>
                                 <select class="form-select border-wine">
                                     <option>Изберете</option>
@@ -90,6 +101,11 @@
                                     <option>За малките художници</option>
                                     <option>Работна среща</option>
                                 </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Избери дата</label>
+                                <input type="date" class="form-control border-wine"
+                                    placeholder="Изберете дата на събитието">
                             </div>
                             <div class="col-12">
                                 <label class="form-label">Бележки</label>
@@ -104,7 +120,7 @@
                             </div>
                             <div class="col-12">
                                 <button type="submit" class="btn text-light mt-3"
-                                    style="background-color:#914E59; font-size:1.25rem;">Изпрати</button>
+                                    style="background-color:#914E59; font-size:1.25rem;">Запази</button>
                             </div>
                         </div>
                     </form>
@@ -138,5 +154,35 @@
     </footer>
 
 </body>
+<script>
+    document.getElementById('bookingForm').addEventListener('submit', function (e) {
+        e.preventDefault(); // Спира презареждането на страницата
+
+        const date = document.getElementById('eventDate').value;
+        const type = document.getElementById('eventType').value;
+
+        if (!date || type === "Изберете") {
+            alert("Моля, попълнете дата и вид събитие!");
+            return;
+        }
+
+        // Създаваме обект за новото събитие
+        const newEvent = {
+            title: type,
+            start: date,
+            allDay: true
+        };
+
+        // Взимаме съществуващите събития от localStorage или създаваме празен списък
+        let events = JSON.parse(localStorage.getItem('userEvents')) || [];
+        events.push(newEvent);
+
+        // Записваме обратно в localStorage
+        localStorage.setItem('userEvents', JSON.stringify(events));
+
+        alert("Часът е запазен успешно! Вижте го в профила си.");
+        window.location.href = "account.html"; // Пренасочва към профила с календара
+    });
+</script>
 
 </html>

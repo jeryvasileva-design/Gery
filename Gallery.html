@@ -40,22 +40,25 @@ S
 </head>
 
 <body>
-    <header class="bg-wine py-3 d-flex justify-content-center">
-        <img src="./photos/logo1.png" alt="logo" style="width:240px; height:87px;">
-    </header>
+    <header class="bg-wine py-3 d-flex justify-content-around">
+    <div class="pe-3 py-3">
+ <a href="index.html" ><img src="./photos/logo1.png" alt="logo" style="width:240px; height:87px;"></a>
+    </div>
+    <div class="pe-3 py-3">
+      <ul class="list-unstyled d-flex flex-row gap-5 ps-md-3 pt-md-4 justify-content-center">
+        <li><a href="SaveHour.html" class="text-light fw-bold fs-5 text-decoration-none">Запази час</a></li>
+        <li><a href="information.html" class="text-light fw-bold fs-5 text-decoration-none">Информация</a></li>
+        <li><a href="login.html" class="text-light fw-bold fs-5 text-decoration-none">Регистрация</a></li>
+         <li><a href="account.html" class="text-light fw-bold fs-5 text-decoration-none">Профил</a></li>
+      </ul>
+    </div>
+  </header>
 
     <section class="d-flex flex-column flex-md-row bg-wine">
-        <aside class="pe-3 py-3">
-            <ul class="list-unstyled d-flex flex-md-column flex-row gap-4 ps-md-3 pt-md-4 justify-content-center">
-                <li><a href="SaveHour.html" class="text-light fw-bold fs-5 text-decoration-none">Запази час</a></li>
-                <li><a href="information.html" class="text-light fw-bold fs-5 text-decoration-none">Информация</a></li>
-                <li><a href="Gallery.html" class="text-light fw-bold fs-5 text-decoration-none">Галерия</a></li>
-            </ul>
-        </aside>
         <div class="position-relative w-100">
             <img src="./photos/whiteGradient.png" alt="gradient" class="position-absolute w-100 h-100 object-fit-cover">
             <img src="./photos/hero3.png" alt="Hero Image" class="img-fluid w-100 object-fit-cover">
-            <div class="position-absolute" style="top:150px; left:0; padding-left:5%;">
+            <div class="position-absolute" style="top:250px; left:0; padding-left:8%;">
                 <h1 class="fw-bold text-dark d-none d-sm-block" style="font-size:4.5rem;">Любими спомени</h1>
                 <p class="text-dark d-none d-sm-block" style="font-size:1.5rem;">Разгледайте галерията ни с подбрани снимки <br> от
                     любимите ни събития
