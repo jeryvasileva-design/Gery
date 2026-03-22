@@ -71,20 +71,54 @@
 </head>
 
 <body>
-  <header class="bg-wine py-3 d-flex justify-content-around">
-    <div class="pe-3 py-3">
- <img src="./photos/logo1.png" alt="logo" style="width:240px; height:87px;">
-    </div>
-    <div class="pe-3 py-3">
-      <ul class="list-unstyled d-flex flex-row gap-5 ps-md-3 pt-md-4 justify-content-center">
-        <li><a href="SaveHour.html" class="text-light fw-bold fs-5 text-decoration-none">Запази час</a></li>
-        <li><a href="information.html" class="text-light fw-bold fs-5 text-decoration-none">Информация</a></li>
-        <li><a href="Gallery.html" class="text-light fw-bold fs-5 text-decoration-none">Галерия</a></li>
-         <li><a href="login.html" class="text-light fw-bold fs-5 text-decoration-none">Регистрация</a></li>
-         <li><a href="account.html" class="text-light fw-bold fs-5 text-decoration-none">Профил</a></li> 
-      </ul>
+  <header class="bg-wine py-3">
+    <div class="container-fluid d-flex justify-content-between align-items-center px-4">
+      <div class="logo-container">
+        <a href="index.html">
+          <img src="./photos/logo1.png" alt="logo" style="max-width:180px; height:auto;">
+        </a>
+      </div>
+      <nav class="d-none d-md-flex">
+        <ul class="list-unstyled d-flex flex-row gap-4 mb-0 align-items-center">
+          <li><a href="SaveHour.html" class="text-light fw-bold text-decoration-none">Запази час</a></li>
+          <li><a href="information.html" class="text-light fw-bold text-decoration-none">Информация</a></li>
+          <li><a href="Gallery.html" class="text-light fw-bold text-decoration-none">Галерия</a></li>
+          <li><a href="login.html" class="text-light fw-bold text-decoration-none">Регистрация</a></li>
+          <li><a href="account.html" class="text-light fw-bold text-decoration-none">Профил</a></li>
+        </ul>
+      </nav>
+      <button class="btn text-light d-md-none border-0" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasNavbar">
+        <span style="font-size: 1.5rem;">☰</span>
+      </button>
     </div>
   </header>
+
+  <div class="offcanvas offcanvas-end w-100" id="offcanvasNavbar" style="background-color: #FAF3EB;">
+    <div class="offcanvas-header bg-wine text-light" style="padding: 8%;">
+      <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">Навигация</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+
+
+    <div class="offcanvas-body p-0 position-relative">
+
+      <img src="./photos/navPic.jpg" alt="background" class="position-absolute w-100 h-100 object-fit-cover"
+        style="top: 0; left: 0; z-index: 1;">
+
+      <div class="position-relative d-flex justify-content-center align-items-center h-100" style="z-index: 2;">
+        <ul class="list-unstyled d-flex flex-column gap-5 fs-5 align-items-center w-100"
+          style="background-color: #FAF3EB; padding-top: 8%; padding-bottom: 5%; margin-left: 18%; margin-right: 18%;">
+          <li><a href="SaveHour.html" class="text-dark fw-bold text-decoration-none custom-nav-link">Запази час</a></li>
+          <li><a href="information.html" class="text-dark fw-bold text-decoration-none custom-nav-link">Информация</a>
+          </li>
+          <li><a href="Gallery.html" class="text-dark fw-bold text-decoration-none custom-nav-link">Галерия</a></li>
+          <li><a href="login.html" class="text-dark fw-bold text-decoration-none custom-nav-link">Регистрация</a></li>
+          <li><a href="account.html" class="text-wine fw-bold text-decoration-none custom-nav-link">Моят Профил</a></li>
+        </ul> 
+      </div>
+    </div>
+  </div>
 
   <section class="d-flex flex-column flex-md-row bg-wine">
     <div class="position-relative w-100">
@@ -264,78 +298,75 @@
   </section>
 
   <section class="my-5 p-5">
- <section class="my-5 p-5">
-        <div class="container bg-purple rounded shadow p-5">
-            <div class="row g-4 align-items-center">
-                <div class="col-md-6">
-                    <h2 class="fw-bold text-dark" style="font-size:2.5rem; padding-bottom: 1%;">Запази си час!</h2>
-                    <p class="text-dark" style="font-size: 18px;">Пусни въображението си на воля!Запази своето място за вечер, пълна с цвят,
-                        вдъхновение и хубаво вино. Независимо дали си начинаещ или опитен художник – при нас най-важното
-                        е да се
-                        забавляваш! Регистрирай се сега и създай своето собствено произведение на изкуството!
-                    </p>
-                    <p class="text-wine fw-bold">paintingwithwine@gmail.com</p>
-                    <p class="text-wine fw-bold">+(359) 573-3085</p>
-                    <img src="./photos/spiledwine.png" class="img-fluid" alt="wine"
-                        style="width:256px; margin-top: 20%;">
-                </div>
-                <div class="col-md-6">
-                    <form>
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label class="form-label">Име</label>
-                                <input type="text" class="form-control border-wine" placeholder="Вашето име">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Фамилия</label>
-                                <input type="text" class="form-control border-wine" placeholder="Вашата фамилия">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Телефон</label>
-                                <input type="text" class="form-control border-wine"
-                                    placeholder="Вашият телефонен номер">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Email</label>
-                                <input type="email" class="form-control border-wine" placeholder="Вашата ел. поща">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Вид събитие</label>
-                                <select class="form-select border-wine">
-                                    <option>Изберете</option>
-                                    <option>Среща за влюбени</option>
-                                    <option>Вечер по женски</option>
-                                    <option>Събитие с приятели</option>
-                                    <option>Семейно събитие</option>
-                                    <option>За малките художници</option>
-                                    <option>Работна среща</option>
-                                </select>
-                            </div>
-                             <div class="col-md-6">
-                                <label class="form-label">Избери дата</label>
-                                <input type="date" class="form-control border-wine" placeholder="Изберете дата на събитието">
-                            </div>
-                            <div class="col-12">
-                                <label class="form-label">Бележки</label>
-                                <textarea class="form-control border-wine" rows="4"
-                                    placeholder="Напишете въпросите си"></textarea>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="termsagree">
-                                    <label class="form-check-label" for="termsagree">Съгласявам се с условията</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <button type="submit" class="btn text-light mt-3"
-                                    style="background-color:#914E59; font-size:1.25rem;">Запази</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+    <div class="container bg-purple rounded shadow p-5">
+      <div class="row g-4 align-items-center">
+        <div class="col-md-6">
+          <h2 class="fw-bold text-dark" style="font-size:2.5rem; padding-bottom: 1%;">Запази си час!</h2>
+          <p class="text-dark" style="font-size: 18px;">Пусни въображението си на воля!Запази своето място за
+            вечер, пълна с цвят,
+            вдъхновение и хубаво вино. Независимо дали си начинаещ или опитен художник – при нас най-важното
+            е да се
+            забавляваш! Регистрирай се сега и създай своето собствено произведение на изкуството!
+          </p>
+          <p class="text-wine fw-bold">paintingwithwine@gmail.com</p>
+          <p class="text-wine fw-bold">+(359) 573-3085</p>
+          <img src="./photos/spiledwine.png" class="img-fluid" alt="wine" style="width:256px; margin-top: 20%;">
         </div>
-    </section>
+        <div class="col-md-6">
+          <form>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Име</label>
+                <input type="text" class="form-control border-wine" placeholder="Вашето име">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Фамилия</label>
+                <input type="text" class="form-control border-wine" placeholder="Вашата фамилия">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Телефон</label>
+                <input type="text" class="form-control border-wine" placeholder="Вашият телефонен номер">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control border-wine" placeholder="Вашата ел. поща">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Вид събитие</label>
+                <select class="form-select border-wine">
+                  <option>Изберете</option>
+                  <option>Среща за влюбени</option>
+                  <option>Вечер по женски</option>
+                  <option>Събитие с приятели</option>
+                  <option>Семейно събитие</option>
+                  <option>За малките художници</option>
+                  <option>Работна среща</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Избери дата</label>
+                <input type="date" class="form-control border-wine" placeholder="Изберете дата на събитието">
+              </div>
+              <div class="col-12">
+                <label class="form-label">Бележки</label>
+                <textarea class="form-control border-wine" rows="4" placeholder="Напишете въпросите си"></textarea>
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="termsagree">
+                  <label class="form-check-label" for="termsagree">Съгласявам се с условията</label>
+                </div>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn text-light mt-3"
+                  style="background-color:#914E59; font-size:1.25rem;">Запази</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <footer
     class="bg-wine text-light d-flex flex-column flex-md-row justify-content-between align-items-center px-4 py-4">
