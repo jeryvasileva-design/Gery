@@ -1,6 +1,12 @@
 $(document).ready(function () {
     
+const userId = localStorage.getItem('userId');
+    const profileLink = document.getElementById('acc');
 
+    if (userId && profileLink) {
+        // Ако в LocalStorage има записано ID, показваме профила веднага
+        profileLink.classList.remove('d-none');
+    }
     $('#registation').submit(function (e) {
         e.preventDefault();
 
@@ -47,13 +53,13 @@ $(document).ready(function () {
 
 
                 if (response.status === 'Success') {
-                    localStorage.setItem('userId', response.id);
+                    
 
                   localStorage.setItem('userId', response.id);
                     
                     // 2. Alert and Redirect to the account page
                     alert("Успешно влизане в акаунт");
-                    a.classList.remove('d-none');
+                   
                    
                 } else {
                     alert("Грешка: " + response.message);
