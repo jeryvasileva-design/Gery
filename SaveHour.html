@@ -40,54 +40,61 @@
 </head>
 
 <body>
-   <header class="bg-wine py-3">
-    <div class="container-fluid d-flex justify-content-between align-items-center px-4">
-      <div class="logo-container">
-        <a href="index.html">
-          <img src="./photos/logo1.png" alt="logo" style="max-width:180px; height:auto;">
-        </a>
-      </div>
-      <nav class="d-none d-md-flex">
-        <ul class="list-unstyled d-flex flex-row gap-4 mb-0 align-items-center">
-          <li><a href="SaveHour.html" class="text-light fw-bold text-decoration-none">Запази час</a></li>
-          <li><a href="information.html" class="text-light fw-bold text-decoration-none">Информация</a></li>
-          <li><a href="Gallery.html" class="text-light fw-bold text-decoration-none">Галерия</a></li>
-          <li><a href="login.html" class="text-light fw-bold text-decoration-none">Регистрация</a></li>
-          <li id="acc" class="d-none"><a href="account.html" class="text-light fw-bold text-decoration-none">Профил</a></li>
-        </ul>
-      </nav>
-      <button class="btn text-light d-md-none border-0" type="button" data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasNavbar">
-        <span style="font-size: 1.5rem;">☰</span>
-      </button>
+    <header class="bg-wine py-3">
+        <div class="container-fluid d-flex justify-content-between align-items-center px-4">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="./photos/logo1.png" alt="logo" style="max-width:180px; height:auto;">
+                </a>
+            </div>
+            <nav class="d-none d-md-flex">
+                <ul class="list-unstyled d-flex flex-row gap-4 mb-0 align-items-center">
+                    <li><a href="SaveHour.html" class="text-light fw-bold text-decoration-none">Запази час</a></li>
+                    <li><a href="information.html" class="text-light fw-bold text-decoration-none">Информация</a></li>
+                    <li><a href="Gallery.html" class="text-light fw-bold text-decoration-none">Галерия</a></li>
+                    <li><a href="login.html" class="text-light fw-bold text-decoration-none">Регистрация</a></li>
+                    <li id="acc" class="d-none"><a href="account.html"
+                            class="text-light fw-bold text-decoration-none">Профил</a></li>
+                </ul>
+            </nav>
+            <button class="btn text-light d-md-none border-0" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar">
+                <span style="font-size: 1.5rem;">☰</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="offcanvas offcanvas-end w-100" id="offcanvasNavbar" style="background-color: #FAF3EB;">
+        <div class="offcanvas-header bg-wine text-light" style="padding: 8%;">
+            <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">Навигация</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+
+
+        <div class="offcanvas-body p-0 position-relative">
+
+            <img src="./photos/navPic.jpg" alt="background" class="position-absolute w-100 h-100 object-fit-cover"
+                style="top: 0; left: 0; z-index: 1;">
+
+            <div class="position-relative d-flex justify-content-center align-items-center h-100" style="z-index: 2;">
+                <ul class="list-unstyled d-flex flex-column gap-5 fs-5 align-items-center w-100"
+                    style="background-color: #FAF3EB; padding-top: 8%; padding-bottom: 5%; margin-left: 18%; margin-right: 18%;">
+                    <li><a href="index.html" class="text-wine fw-bold text-decoration-none custom-nav-link">Начална
+                            страница</a>
+                    <li><a href="information.html"
+                            class="text-dark fw-bold text-decoration-none custom-nav-link">Информация</a>
+                    </li>
+                    <li><a href="Gallery.html"
+                            class="text-dark fw-bold text-decoration-none custom-nav-link">Галерия</a></li>
+                    <li><a href="login.html"
+                            class="text-dark fw-bold text-decoration-none custom-nav-link">Регистрация</a></li>
+                    <li><a href="account.html" class="text-dark fw-bold text-decoration-none custom-nav-link">Моят
+                            Профил</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
-  </header>
-
-  <div class="offcanvas offcanvas-end w-100" id="offcanvasNavbar" style="background-color: #FAF3EB;">
-    <div class="offcanvas-header bg-wine text-light" style="padding: 8%;">
-      <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">Навигация</h5>
-      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-
-
-    <div class="offcanvas-body p-0 position-relative">
-
-      <img src="./photos/navPic.jpg" alt="background" class="position-absolute w-100 h-100 object-fit-cover"
-        style="top: 0; left: 0; z-index: 1;">
-
-      <div class="position-relative d-flex justify-content-center align-items-center h-100" style="z-index: 2;">
-        <ul class="list-unstyled d-flex flex-column gap-5 fs-5 align-items-center w-100"
-          style="background-color: #FAF3EB; padding-top: 8%; padding-bottom: 5%; margin-left: 18%; margin-right: 18%;">
-          <li><a href="index.html" class="text-wine fw-bold text-decoration-none custom-nav-link">Начална страница</a>
-          <li><a href="information.html" class="text-dark fw-bold text-decoration-none custom-nav-link">Информация</a>
-          </li>
-          <li><a href="Gallery.html" class="text-dark fw-bold text-decoration-none custom-nav-link">Галерия</a></li>
-          <li><a href="login.html" class="text-dark fw-bold text-decoration-none custom-nav-link">Регистрация</a></li>
-          <li><a href="account.html" class="text-dark fw-bold text-decoration-none custom-nav-link">Моят Профил</a></li>
-        </ul> 
-      </div>
-    </div>
-  </div>
 
 
     <section class="my-5 p-5">
@@ -107,50 +114,52 @@
                         style="width:256px; margin-top: 20%;">
                 </div>
                 <div class="col-md-6">
-                    <form>
+                    <form id="eventForm"> <input type="hidden" name="userId" id="formUserId">
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label class="form-label">Име</label>
-                                <input type="text" class="form-control border-wine" placeholder="Вашето име">
+                                <input type="text" name="firstName" class="form-control border-wine"
+                                    placeholder="Вашето име" required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Фамилия</label>
-                                <input type="text" class="form-control border-wine" placeholder="Вашата фамилия">
+                                <input type="text" name="lastName" class="form-control border-wine"
+                                    placeholder="Вашата фамилия">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Телефон</label>
-                                <input type="text" class="form-control border-wine"
+                                <input type="text" name="phone" class="form-control border-wine"
                                     placeholder="Вашият телефонен номер">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Email</label>
-                                <input type="email" class="form-control border-wine" placeholder="Вашата ел. поща">
+                                <input type="email" name="email" class="form-control border-wine"
+                                    placeholder="Вашата ел. поща">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Вид събитие</label>
-                                <select class="form-select border-wine">
-                                    <option>Изберете</option>
-                                    <option>Среща за влюбени</option>
-                                    <option>Вечер по женски</option>
-                                    <option>Събитие с приятели</option>
-                                    <option>Семейно събитие</option>
-                                    <option>За малките художници</option>
-                                    <option>Работна среща</option>
+                                <select name="eventType" class="form-select border-wine">
+                                    <option value="Изберете">Изберете</option>
+                                    <option value="Среща за влюбени">Среща за влюбени</option>
+                                    <option value="Вечер по женски">Вечер по женски</option>
+                                    <option value="Събитие с приятели">Събитие с приятели</option>
+                                    <option value="Семейно събитие">Семейно събитие</option>
+                                    <option value="За малките художници">За малките художници</option>
+                                    <option value="Работна среща">Работна среща</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Избери дата</label>
-                                <input type="date" class="form-control border-wine"
-                                    placeholder="Изберете дата на събитието">
+                                <input type="date" name="eventDate" class="form-control border-wine" required>
                             </div>
                             <div class="col-12">
                                 <label class="form-label">Бележки</label>
-                                <textarea class="form-control border-wine" rows="4"
+                                <textarea name="notes" class="form-control border-wine" rows="4"
                                     placeholder="Напишете въпросите си"></textarea>
                             </div>
                             <div class="col-12">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="termsagree">
+                                    <input class="form-check-input" type="checkbox" id="termsagree" required>
                                     <label class="form-check-label" for="termsagree">Съгласявам се с условията</label>
                                 </div>
                             </div>
@@ -189,7 +198,8 @@
         </div>
     </footer>
 </body>
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
     crossorigin="anonymous"></script>
+
 </html>

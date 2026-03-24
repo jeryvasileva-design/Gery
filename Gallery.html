@@ -20,8 +20,8 @@
         .text-wine {
             color: #914E59;
         }
-S
-        .bg-pink {
+
+        S .bg-pink {
             background-color: #F5D0DC;
         }
 
@@ -41,54 +41,60 @@ S
 
 <body>
     <header class="bg-wine py-3">
-    <div class="container-fluid d-flex justify-content-between align-items-center px-4">
-      <div class="logo-container">
-        <a href="index.html">
-          <img src="./photos/logo1.png" alt="logo" style="max-width:180px; height:auto;">
-        </a>
-      </div>
-      <nav class="d-none d-md-flex">
-        <ul class="list-unstyled d-flex flex-row gap-4 mb-0 align-items-center">
-          <li><a href="SaveHour.html" class="text-light fw-bold text-decoration-none">Запази час</a></li>
-          <li><a href="information.html" class="text-light fw-bold text-decoration-none">Информация</a></li>
-          <li><a href="Gallery.html" class="text-light fw-bold text-decoration-none">Галерия</a></li>
-          <li><a href="login.html" class="text-light fw-bold text-decoration-none">Регистрация</a></li>
-          <li id="acc" class="d-none"><a href="account.html" class="text-light fw-bold text-decoration-none">Профил</a></li>
-        </ul>
-      </nav>
-      <button class="btn text-light d-md-none border-0" type="button" data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasNavbar">
-        <span style="font-size: 1.5rem;">☰</span>
-      </button>
+        <div class="container-fluid d-flex justify-content-between align-items-center px-4">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="./photos/logo1.png" alt="logo" style="max-width:180px; height:auto;">
+                </a>
+            </div>
+            <nav class="d-none d-md-flex">
+                <ul class="list-unstyled d-flex flex-row gap-4 mb-0 align-items-center">
+                    <li><a href="SaveHour.html" class="text-light fw-bold text-decoration-none">Запази час</a></li>
+                    <li><a href="information.html" class="text-light fw-bold text-decoration-none">Информация</a></li>
+                    <li><a href="Gallery.html" class="text-light fw-bold text-decoration-none">Галерия</a></li>
+                    <li><a href="login.html" class="text-light fw-bold text-decoration-none">Регистрация</a></li>
+                    <li id="acc" class="d-none"><a href="account.html"
+                            class="text-light fw-bold text-decoration-none">Профил</a></li>
+                </ul>
+            </nav>
+            <button class="btn text-light d-md-none border-0" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar">
+                <span style="font-size: 1.5rem;">☰</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="offcanvas offcanvas-end w-100" id="offcanvasNavbar" style="background-color: #FAF3EB;">
+        <div class="offcanvas-header bg-wine text-light" style="padding: 8%;">
+            <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">Навигация</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+
+
+        <div class="offcanvas-body p-0 position-relative">
+
+            <img src="./photos/navPic.jpg" alt="background" class="position-absolute w-100 h-100 object-fit-cover"
+                style="top: 0; left: 0; z-index: 1;">
+
+            <div class="position-relative d-flex justify-content-center align-items-center h-100" style="z-index: 2;">
+                <ul class="list-unstyled d-flex flex-column gap-5 fs-5 align-items-center w-100"
+                    style="background-color: #FAF3EB; padding-top: 8%; padding-bottom: 5%; margin-left: 18%; margin-right: 18%;">
+                    <li><a href="index.html" class="text-wine fw-bold text-decoration-none custom-nav-link">Начална
+                            страница</a>
+                    <li><a href="SaveHour.html" class="text-dark fw-bold text-decoration-none custom-nav-link">Запази
+                            час</a></li>
+                    <li><a href="information.html"
+                            class="text-dark fw-bold text-decoration-none custom-nav-link">Информация</a>
+                    </li>
+                    <li><a href="login.html"
+                            class="text-dark fw-bold text-decoration-none custom-nav-link">Регистрация</a></li>
+                    <li><a href="account.html" class="text-dark fw-bold text-decoration-none custom-nav-link">Профил</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-  </header>
-
-  <div class="offcanvas offcanvas-end w-100" id="offcanvasNavbar" style="background-color: #FAF3EB;">
-    <div class="offcanvas-header bg-wine text-light" style="padding: 8%;">
-      <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">Навигация</h5>
-      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-
-
-    <div class="offcanvas-body p-0 position-relative">
-
-      <img src="./photos/navPic.jpg" alt="background" class="position-absolute w-100 h-100 object-fit-cover"
-        style="top: 0; left: 0; z-index: 1;">
-
-      <div class="position-relative d-flex justify-content-center align-items-center h-100" style="z-index: 2;">
-        <ul class="list-unstyled d-flex flex-column gap-5 fs-5 align-items-center w-100"
-          style="background-color: #FAF3EB; padding-top: 8%; padding-bottom: 5%; margin-left: 18%; margin-right: 18%;">
-          <li><a href="index.html" class="text-wine fw-bold text-decoration-none custom-nav-link">Начална страница</a>
-          <li><a href="SaveHour.html" class="text-dark fw-bold text-decoration-none custom-nav-link">Запази час</a></li>
-          <li><a href="information.html" class="text-dark fw-bold text-decoration-none custom-nav-link">Информация</a>
-          </li>
-          <li><a href="login.html" class="text-dark fw-bold text-decoration-none custom-nav-link">Регистрация</a></li>
-          <li><a href="account.html" class="text-dark fw-bold text-decoration-none custom-nav-link">Профил</a></li>
-        </ul> 
-      </div>
-    </div>
-  </div>
-
 
     <section class="d-flex flex-column flex-md-row bg-wine">
         <div class="position-relative w-100">
@@ -96,58 +102,71 @@ S
             <img src="./photos/hero3.png" alt="Hero Image" class="img-fluid w-100 object-fit-cover">
             <div class="position-absolute" style="top:250px; left:0; padding-left:8%;">
                 <h1 class="fw-bold text-dark d-none d-sm-block" style="font-size:4.5rem;">Любими спомени</h1>
-                <p class="text-dark d-none d-sm-block" style="font-size:1.5rem;">Разгледайте галерията ни с подбрани снимки <br> от
-                    любимите ни събития
+                <p class="text-dark d-none d-sm-block" style="font-size:1.5rem;">Разгледайте галерията ни с подбрани
+                    снимки <br> от любимите ни събития
                 </p>
             </div>
         </div>
     </section>
 
-    <section class="mt-5 mb-">
+   <section class="mt-5 mb-5">
         <div class="container">
-            <div class="row row-cols-1 row-cols-md-5 row-cols-lg-5 g-1 mb-5 mt-4">
-                <div class="col d-flex-column">
-                    <video src="./photos/video1.mp4" class=" w-100" controls></video>
-                    <img src="./photos/gallery4.jpg" class=" w-100" onclick="FullScreen(this.src)" alt="gallery4">
-                    <img src="./photos/gallery8.jpg" class=" w-100" onclick="FullScreen(this.src)" alt="gallery8">
+            <div class="row row-cols-1 row-cols-md-5 g-2 mb-5 mt-4">
+
+                <div class="col d-flex flex-column gap-2">
+                    <video src="./photos/video1.mp4" class="w-100 shadow-sm rounded" controls></video>
+                    <img src="./photos/gallery4.jpg" class="w-100 shadow-sm rounded" onclick="FullScreen(this.src)" alt="gallery4">
+                    <img src="./photos/gallery8.jpg" class="w-100 shadow-sm rounded" onclick="FullScreen(this.src)" alt="gallery8">
+                    <img src="./photos/gallery15.jpg" class="w-100 shadow-sm rounded" onclick="FullScreen(this.src)" alt="gallery15">
+                    <img src="./photos/gallery21.jpg" class="w-100 shadow-sm rounded" onclick="FullScreen(this.src)" alt="gallery21">
+                    <img src="./photos/gallery26.jpg" class="w-100 shadow-sm rounded" onclick="FullScreen(this.src)" alt="gallery26">
                 </div>
-                <div class="col d-flex-column">
-                    <img src="./photos/gallery1.jpg" class=" w-100" onclick="FullScreen(this.src)" alt="gallery4">
-                    <img src="./photos/gallery5.jpg" class=" w-100" onclick="FullScreen(this.src)" alt="gallery8">
-                    <img src="./photos/gallery9.jpg" class=" w-100" onclick="FullScreen(this.src)" alt="gallery8">
+
+                <div class="col d-flex flex-column gap-2">
+                    <img src="./photos/gallery1.jpg" class="w-100 shadow-sm rounded" onclick="FullScreen(this.src)" alt="gallery1">
+                    <img src="./photos/gallery5.jpg" class="w-100 shadow-sm rounded" onclick="FullScreen(this.src)" alt="gallery5">
+                    <img src="./photos/gallery9.jpg" class="w-100 shadow-sm rounded" onclick="FullScreen(this.src)" alt="gallery9">
+                    <img src="./photos/gallery16.jpg" class="w-100 shadow-sm rounded" onclick="FullScreen(this.src)" alt="gallery16">
+                    <img src="./photos/gallery22.jpg" class="w-100 shadow-sm rounded" onclick="FullScreen(this.src)" alt="gallery22">
+                    <img src="./photos/gallery27.jpg" class="w-100 shadow-sm rounded" onclick="FullScreen(this.src)" alt="gallery27">
                 </div>
-                <div class="col d-flex-column">
-                    <img src="./photos/gallery2.jpg" class=" w-100" onclick="FullScreen(this.src)" alt="gallery4">
-                    <img src="./photos/gallery6.jpg" class=" w-100" onclick="FullScreen(this.src)" alt="gallery8">
-                    <video src="./photos/video4.mp4" class=" w-100" controls></video>
+
+                <div class="col d-flex flex-column gap-2">
+                    <img src="./photos/gallery2.jpg" class="w-100 shadow-sm rounded" onclick="FullScreen(this.src)" alt="gallery2">
+                    <img src="./photos/gallery6.jpg" class="w-100 shadow-sm rounded" onclick="FullScreen(this.src)" alt="gallery6">
+                    <video src="./photos/video4.mp4" class="w-100 shadow-sm rounded" controls></video>
+                    <img src="./photos/gallery17.jpg" class="w-100 shadow-sm rounded" onclick="FullScreen(this.src)" alt="gallery17">
+                    <img src="./photos/gallery23.jpg" class="w-100 shadow-sm rounded" onclick="FullScreen(this.src)" alt="gallery23">
+                    <img src="./photos/gallery28.jpg" class="w-100 shadow-sm rounded" onclick="FullScreen(this.src)" alt="gallery28">
                 </div>
-                <div class="col d-flex-column">
-                    <img src="./photos/gallery3.jpg" class=" w-100" onclick="FullScreen(this.src)" alt="gallery4">
-                    <video src="./photos/video3.mp4" class=" w-100" controls></video>
-                    <img src="./photos/gallery10.jpg" class=" w-100" onclick="FullScreen(this.src)" alt="gallery8">
+
+                <div class="col d-flex flex-column gap-2">
+                    <img src="./photos/gallery3.jpg" class="w-100 shadow-sm rounded" onclick="FullScreen(this.src)" alt="gallery3">
+                    <video src="./photos/video3.mp4" class="w-100 shadow-sm rounded" controls></video>
+                    <img src="./photos/gallery10.jpg" class="w-100 shadow-sm rounded" onclick="FullScreen(this.src)" alt="gallery10">
+                    <img src="./photos/gallery18.jpg" class="w-100 shadow-sm rounded" onclick="FullScreen(this.src)" alt="gallery18">
+                    <img src="./photos/gallery24.jpg" class="w-100 shadow-sm rounded" onclick="FullScreen(this.src)" alt="gallery24">
                 </div>
-                <div class="col d-flex-column">
-                    <video src="./photos/video2.mp4" class=" w-100" controls></video>
-                    <img src="./photos/gallery7.jpg" class=" w-100" onclick="FullScreen(this.src)" alt="gallery4">
-                    <img src="./photos/gallery11.jpg" class=" w-100" onclick="FullScreen(this.src)" alt="gallery8">
+
+                <div class="col d-flex flex-column gap-2">
+                    <video src="./photos/video2.mp4" class="w-100 shadow-sm rounded" controls></video>
+                    <img src="./photos/gallery7.jpg" class="w-100 shadow-sm rounded" onclick="FullScreen(this.src)" alt="gallery7">
+                    <img src="./photos/gallery11.jpg" class="w-100 shadow-sm rounded" onclick="FullScreen(this.src)" alt="gallery11">
+                    <img src="./photos/gallery19.jpg" class="w-100 shadow-sm rounded" onclick="FullScreen(this.src)" alt="gallery19">
+                    <img src="./photos/gallery20.jpg" class="w-100 shadow-sm rounded" onclick="FullScreen(this.src)" alt="gallery20">
+                    <img src="./photos/gallery25.jpg" class="w-100 shadow-sm rounded" onclick="FullScreen(this.src)" alt="gallery25">
                 </div>
+
             </div>
         </div>
-        <div id="FullScreenImage"
-            class="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-75"
-            style="z-index: 1050; display: none;">
-            <button id="PrevButton" onclick="PrevImage()"
-                class="btn btn-light position-absolute start-0 ms-3">←</button>
-            <span id="CloseButton" onclick="CloseFullScreen()" class="btn btn-danger position-absolute top-0 end-0 m-3"
-                style="cursor: pointer;">✕</span>
 
+        <div id="FullScreenImage" class="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-75" style="z-index: 1050; display: none;">
+            <button id="PrevButton" onclick="PrevImage()" class="btn btn-light position-absolute start-0 ms-3">←</button>
+            <span id="CloseButton" onclick="CloseFullScreen()" class="btn btn-danger position-absolute top-0 end-0 m-3" style="cursor: pointer;">✕</span>
             <img id="FullImage" class="img-fluid rounded shadow" style="max-height: 90vh;" />
             <button id="NextButton" onclick="NextImage()" class="btn btn-light position-absolute end-0 me-3">→</button>
         </div>
-
     </section>
-
-
 
     <footer
         class="bg-wine text-light d-flex flex-column flex-md-row justify-content-between align-items-center px-4 py-4">
@@ -175,9 +194,9 @@ S
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            
+
             const fullScreen = document.getElementById("FullScreenImage");
-            fullScreen.classList.add("d-none");  
+            fullScreen.classList.add("d-none");
         });
 
         let images = Array.from(document.querySelectorAll(".row img"));
@@ -209,7 +228,8 @@ S
     </script>
 
 </body>
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
     crossorigin="anonymous"></script>
+
 </html>
