@@ -7,6 +7,8 @@
   <title>Home page</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="script.js" defer></script>
   <style>
     html,
     body {
@@ -80,12 +82,18 @@
       </div>
       <nav class="d-none d-md-flex">
         <ul class="list-unstyled d-flex flex-row gap-4 mb-0 align-items-center">
-          <li><a href="SaveHour.html" class="text-light fw-bold text-decoration-none">Запази час</a></li>
           <li><a href="information.html" class="text-light fw-bold text-decoration-none">Информация</a></li>
           <li><a href="Gallery.html" class="text-light fw-bold text-decoration-none">Галерия</a></li>
-          <li><a href="login.html" class="text-light fw-bold text-decoration-none">Регистрация</a></li>
-          <li id="acc" class="d-none"><a href="account.html"
-              class="text-wine fw-bold text-decoration-none custom-nav-link"> Профил</a></li>
+
+          <li><a href="login.html" class="text-light fw-bold text-decoration-none" id="registerLink">Регистрация</a></li>
+
+          <li class="nav-item d-none" id="save">
+            <a class="nav-link text-light fw-bold text-decoration-none" href="SaveHour.html">Запази час</a>
+          </li>
+
+          <li class="nav-item d-none" id="acc">
+            <a class="nav-link text-light fw-bold text-decoration-none" href="account.html">Профил</a>
+          </li>
         </ul>
       </nav>
       <button class="btn text-light d-md-none border-0" type="button" data-bs-toggle="offcanvas"
@@ -329,7 +337,7 @@
           <p>
             Пълен пакет: Ние осигуряваме всичко – стативи, платна, четки, бои и, разбира се, селектирано вино.
             Без опит? Няма проблем! Повечето ни гости хващат четка за първи път от години. Резултатите винаги са
-            впечатляващи. 
+            впечатляващи.
             Локация и атмосфера: Студиото ни е проектирано да бъде вашият оазис на спокойствието.
           </p>
         </div>

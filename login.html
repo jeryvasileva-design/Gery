@@ -104,11 +104,18 @@
             </div>
             <nav class="d-none d-md-flex">
                 <ul class="list-unstyled d-flex flex-row gap-4 mb-0 align-items-center">
-                    <li><a href="SaveHour.html" class="text-light fw-bold text-decoration-none">Запази час</a></li>
                     <li><a href="information.html" class="text-light fw-bold text-decoration-none">Информация</a></li>
                     <li><a href="Gallery.html" class="text-light fw-bold text-decoration-none">Галерия</a></li>
+
                     <li><a href="login.html" class="text-light fw-bold text-decoration-none">Регистрация</a></li>
-                    <li id="acc" class="d-none"><a href="account.html" class="text-light fw-bold text-decoration-none">Профил</a></li>
+
+                    <li class="nav-item d-none" id="save">
+                        <a class="nav-link text-light fw-bold text-decoration-none" href="SaveHour.html">Запази час</a>
+                    </li>
+
+                    <li class="nav-item d-none" id="acc">
+                        <a class="nav-link text-light fw-bold text-decoration-none" href="account.html">Профил</a>
+                    </li>
                 </ul>
             </nav>
             <button class="btn text-light d-md-none border-0" type="button" data-bs-toggle="offcanvas"
@@ -162,7 +169,7 @@
                     <div class="col-md-7 p-5 d-flex flex-column justify-content-center"
                         style="background-color: #FAF3EB;">
                         <h2 class="fw-bold text-dark display-6 mb-5">Здравейте отново!</h2>
-                        <form id="login" action = "php/Login.php" method="post">
+                        <form id="login" action="php/Login.php" method="post">
                             <div class="mb-4">
                                 <label class="fw-bold">Имейл</label>
                                 <input type="email" class="form-control form-control-underline"
