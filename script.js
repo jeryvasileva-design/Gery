@@ -1,59 +1,64 @@
 $(document).ready(function () {
 
-    // === 1. ГЛОБАЛНА ФУНКЦИЯ ЗА НАВИГАЦИЯ И ДОСТЪП ===
+    // === 1. ФУНКЦИЯ ЗА УПРАВЛЕНИЕ НА ВИДИМОСТТА ===
     function updateNavigation() {
         let userId = localStorage.getItem('userId');
         const isLoggedIn = userId && userId !== "null" && userId !== "undefined" && userId !== "";
 
-        const profileLink = $('#acc');      
-        const saveHourLink = $('#save');    
-        const logoutBtn = $('#logoutBtn');  
+        // Селектираме елементите едновременно по ID и по КЛАС
+        const profileLinks = $('#acc, .nav-acc');      
+        const saveHourLinks = $('#save, .nav-save');    
+        const logoutBtns = $('#logoutBtn, .logoutBtn');  
         
-        // ВАЖНО: Селектираме само линка в навигацията
-        const navLoginLink = $('nav a[href="login.html"]').parent();
+        // Намираме всички линкове за Регистрация (<a> сочи към login.html)
+        const registrationLinks = $('a[href="login.html"]').parent();
 
         if (isLoggedIn) {
-            profileLink.removeClass('d-none').show();
-            saveHourLink.removeClass('d-none').show();
-            logoutBtn.removeClass('d-none').show();
-            navLoginLink.hide(); // Скрива само "Регистрация" в менюто
+            // АКО Е ВЛЯЗЪЛ:
+            profileLinks.removeClass('d-none').show();
+            saveHourLinks.removeClass('d-none').show();
+            logoutBtns.removeClass('d-none').show();
+            registrationLinks.addClass('d-none').hide();
         } else {
-            profileLink.addClass('d-none').hide();
-            saveHourLink.addClass('d-none').hide();
-            logoutBtn.addClass('d-none').hide();
-            navLoginLink.show(); // Показва го, ако не е логнат
+            // АКО НЕ Е ВЛЯЗЪЛ:
+            profileLinks.addClass('d-none').hide();
+            saveHourLinks.addClass('d-none').hide();
+            logoutBtns.addClass('d-none').hide();
+            registrationLinks.removeClass('d-none').show();
         }
     }
-    // Извикваме навигацията веднага при зареждане
+
     updateNavigation();
 
-    // === 2. ЛОГИКА ЗА ВХОД (LOGIN) ===
+    // === 2. ЛОГИКА ЗА ВХОД ===
     $('#login').submit(function (e) {
         e.preventDefault();
         $.ajax({
             type: 'POST',
             url: 'php/Login.php',
             data: $(this).serialize(),
-            dataType: 'json', // Очакваме JSON отговор от сървъра
+            dataType: 'json',
             success: function (response) {
                 if (response.status === 'Success') {
-                    localStorage.setItem('userId', response.id); // Записваме ID-то
-                    window.location.href = 'account.html'; // Препращаме към профила
+                    localStorage.setItem('userId', response.id);
+                    window.location.href = 'account.html';
                 } else {
                     alert("Грешка: " + response.message);
                 }
             },
-            error: function() {
-                alert("Грешка при връзка със сървъра.");
+            error: function () {
+                alert("Възникна грешка при свързване със сървъра.");
             }
         });
     });
 
-    // === 3. ЛОГИКА ЗА ИЗХОД (LOGOUT) ===
-    $(document).on('click', '#logoutBtn', function (e) {
+    // === 3. ЛОГИКА ЗА ИЗХОД ===
+    // Използваме клас и ID, за да хванем бутона и в двете менюта
+    $(document).on('click', '#logoutBtn, .logoutBtn', function (e) {
         e.preventDefault();
-        localStorage.removeItem('userId'); // Изтриваме ID-то
-        window.location.href = 'index.html'; // Връщаме в началото
+        localStorage.removeItem('userId');
+        updateNavigation(); 
+        window.location.href = 'index.html';
     });
 
     // === 4. ЛОГИКА ЗА РЕГИСТРАЦИЯ ===
@@ -65,8 +70,8 @@ $(document).ready(function () {
             data: $(this).serialize(),
             success: function (response) {
                 if (response.trim() === 'Success') {
-                    alert("Успешна регистрация! Вече можете да влезете.");
-                    if (typeof toggleFlip === "function") toggleFlip(); // Превключваме към формата за вход
+                    alert("Успешна регистрация!");
+                    if (typeof toggleFlip === "function") toggleFlip();
                 } else {
                     alert("Грешка: " + response);
                 }
@@ -74,24 +79,30 @@ $(document).ready(function () {
         });
     });
 
-    // === 5. ЛОГИКА ЗА ЗАПАЗВАНЕ НА ЧАС ===
-    // Попълваме скритото ID в полето, ако съществува
+    // === 5. ЗАПАЗВАНЕ НА ЧАС ===
     if ($('#userIdInput').length > 0) {
         $('#userIdInput').val(localStorage.getItem('userId'));
     }
 
     $('#eventForm').submit(function (e) {
         e.preventDefault();
+        const userId = localStorage.getItem('userId');
+        if (!userId) {
+            alert("Трябва да сте влезли, за да запазите час.");
+            window.location.href = 'login.html';
+            return;
+        }
         $.ajax({
             type: 'POST',
             url: 'php/SaveHour.php',
-            data: $(this).serialize(),
+            data: $(this).serialize() + "&userId=" + userId,
+            dataType: 'json',
             success: function (response) {
                 if (response.status === 'Success') {
                     alert("Часът е запазен успешно!");
                     window.location.href = 'account.html';
                 } else {
-                    alert("Грешка при запис: " + response.message);
+                    alert("Грешка: " + response.message);
                 }
             }
         });

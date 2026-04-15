@@ -85,7 +85,8 @@
           <li><a href="information.html" class="text-light fw-bold text-decoration-none">Информация</a></li>
           <li><a href="Gallery.html" class="text-light fw-bold text-decoration-none">Галерия</a></li>
 
-          <li><a href="login.html" class="text-light fw-bold text-decoration-none" id="registerLink">Регистрация</a></li>
+          <li><a href="login.html" class="text-light fw-bold text-decoration-none" id="registerLink">Регистрация</a>
+          </li>
 
           <li class="nav-item d-none" id="save">
             <a class="nav-link text-light fw-bold text-decoration-none" href="SaveHour.html">Запази час</a>
@@ -109,23 +110,31 @@
       <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
 
-
     <div class="offcanvas-body p-0 position-relative">
-
       <img src="./photos/navPic.jpg" alt="background" class="position-absolute w-100 h-100 object-fit-cover"
         style="top: 0; left: 0; z-index: 1;">
 
-      <div class="position-relative d-flex justify-content-center align-items-center h-100" style="z-index: 2;">
+      <nav class="position-relative d-flex justify-content-center align-items-center h-100" style="z-index: 2;">
         <ul class="list-unstyled d-flex flex-column gap-5 fs-5 align-items-center w-100"
           style="background-color: #FAF3EB; padding-top: 8%; padding-bottom: 5%; margin-left: 18%; margin-right: 18%;">
-          <li><a href="SaveHour.html" class="text-dark fw-bold text-decoration-none custom-nav-link">Запази час</a></li>
+          <li><a href="index.html" class="text-dark fw-bold text-decoration-none custom-nav-link">Начална
+              страница</a></li>
           <li><a href="information.html" class="text-dark fw-bold text-decoration-none custom-nav-link">Информация</a>
           </li>
           <li><a href="Gallery.html" class="text-dark fw-bold text-decoration-none custom-nav-link">Галерия</a></li>
+
           <li><a href="login.html" class="text-dark fw-bold text-decoration-none custom-nav-link">Регистрация</a></li>
-          <li><a href="account.html" class="text-wine fw-bold text-decoration-none custom-nav-link">Моят Профил</a></li>
+
+          <li class="nav-item d-none nav-save">
+            <a class="text-dark fw-bold text-decoration-none custom-nav-link" href="SaveHour.html">Запази
+              час</a>
+          </li>
+
+          <li class="nav-item d-none nav-acc">
+            <a class="text-dark fw-bold text-decoration-none custom-nav-link" href="account.html">Профил</a>
+          </li>
         </ul>
-      </div>
+      </nav>
     </div>
   </div>
 
