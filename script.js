@@ -6,10 +6,10 @@ $(document).ready(function () {
         const isLoggedIn = userId && userId !== "null" && userId !== "undefined" && userId !== "";
 
         // Селектираме елементите едновременно по ID и по КЛАС
-        const profileLinks = $('#acc, .nav-acc');      
-        const saveHourLinks = $('#save, .nav-save');    
-        const logoutBtns = $('#logoutBtn, .logoutBtn');  
-        
+        const profileLinks = $('#acc, .nav-acc');
+        const saveHourLinks = $('#save, .nav-save');
+        const logoutBtns = $('#logoutBtn, .logoutBtn');
+
         // Намираме всички линкове за Регистрация (<a> сочи към login.html)
         const registrationLinks = $('a[href="login.html"]').parent();
 
@@ -41,7 +41,12 @@ $(document).ready(function () {
             success: function (response) {
                 if (response.status === 'Success') {
                     localStorage.setItem('userId', response.id);
+                    localStorage.setItem('userName', response.userName);
+                    let userName = localStorage.getItem('userName');
+
+
                     window.location.href = 'account.html';
+
                 } else {
                     alert("Грешка: " + response.message);
                 }
@@ -53,11 +58,10 @@ $(document).ready(function () {
     });
 
     // === 3. ЛОГИКА ЗА ИЗХОД ===
-    // Използваме клас и ID, за да хванем бутона и в двете менюта
     $(document).on('click', '#logoutBtn, .logoutBtn', function (e) {
         e.preventDefault();
-        localStorage.removeItem('userId');
-        updateNavigation(); 
+        localStorage.clear(); // Чисти всичко (userId, userName)
+        updateNavigation();
         window.location.href = 'index.html';
     });
 
@@ -79,31 +83,38 @@ $(document).ready(function () {
         });
     });
 
-    // === 5. ЗАПАЗВАНЕ НА ЧАС ===
-    if ($('#userIdInput').length > 0) {
-        $('#userIdInput').val(localStorage.getItem('userId'));
-    }
-
+    // === 5. ЗАПАЗВАНЕ НА ЧАС (SaveHour.html) ===
     $('#eventForm').submit(function (e) {
         e.preventDefault();
         const userId = localStorage.getItem('userId');
+
         if (!userId) {
-            alert("Трябва да сте влезли, за да запазите час.");
+            alert("Трябва да сте влезли в профила си.");
             window.location.href = 'login.html';
             return;
         }
+
+        // Поставяме ID-то в скрития input
+        $('#userIdInput').val(userId);
+
+        let formData = $(this).serialize();
+
         $.ajax({
             type: 'POST',
             url: 'php/SaveHour.php',
-            data: $(this).serialize() + "&userId=" + userId,
+            data: formData,
             dataType: 'json',
             success: function (response) {
                 if (response.status === 'Success') {
                     alert("Часът е запазен успешно!");
-                    window.location.href = 'account.html';
+                    window.location.href = 'account.html'; // Пренасочване към профила с календара
                 } else {
                     alert("Грешка: " + response.message);
                 }
+            },
+            error: function (xhr) {
+                console.error(xhr.responseText);
+                alert("Техническа грешка при записването.");
             }
         });
     });

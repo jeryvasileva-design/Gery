@@ -8,8 +8,10 @@
     <title>Акаунт</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;700;800&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/main.min.css" rel="stylesheet">
+
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.10/locales/bg.global.min.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="script.js" defer></script>
     <style>
@@ -76,10 +78,57 @@
         #logoutBtn:active {
             background-color: #92afb5;
         }
+
+        /* Основен стил за кутията на събитието */
+        .fc-event {
+            background-color: #914E59 !important;
+            /* Цвят Wine */
+            border: none !important;
+            border-radius: 4px !important;
+            padding: 2px 5px !important;
+        }
+
+        /* Прави заглавието и часа бели */
+        .fc-event-title,
+        .fc-event-time {
+            color: #ffffff !important;
+            font-weight: 600 !important;
+            font-family: 'Sofia Sans', sans-serif;
+        }
+
+        /* Премахва синята точка, тъй като вече имаме фон на цялото събитие */
+        .fc-daygrid-event-dot {
+            display: none !important;
+        }
+
+        /* Стил за днешния ден в календара */
+        .fc-day-today {
+            background-color: rgba(145, 78, 89, 0.1) !important;
+            /* Светло винено за днешна дата */
+        }
+
+        /* Стил на бутоните на календара */
+        .fc-button-primary {
+            background-color: #914E59 !important;
+            border-color: #914E59 !important;
+        }
+
+        .fc-button-primary:hover {
+            background-color: #723d46 !important;
+        }
     </style>
 </head>
 
 <body>
+    <script>document.addEventListener('DOMContentLoaded', function () {
+            const userName = localStorage.getItem('userName');
+            const accH = document.getElementById('accEventName');
+
+            if (userName && accH) {
+                accH.innerText = "Събитията на " + userName + "!";
+            }
+        });</script>
+
     <header class="bg-wine py-3">
         <div class="container-fluid d-flex justify-content-between align-items-center px-4">
             <div class="logo-container">
@@ -146,30 +195,16 @@
                     </li>
 
                     <li>
-                        <button id= "logoutBtn">Изход</button>
+                        <button id="logoutBtn">Изход</button>
                     </li>
                 </ul>
             </nav>
         </div>
     </div>
 
-    <section class="container py-5">
-        <div class="d-flex flex-column flex-md-row align-items-center justify-content-center gap-4">
-            <div>
-                <img src="./photos/painting18.jpg" class="rounded-circle shadow-sm"
-                    style="width: 150px; height: 150px; object-fit: cover;" alt="Профилна снимка">
-            </div>
-            <div class="text-center text-md-start">
-                <h2 class="fw-bold mb-1">Име на потребителя</h2>
-                <p class="text-muted mb-3">Вашите лични резервации и събития.</p>
-                <a href="#" class="btn rounded-md text-light mt-3 mt-sm-1 mt-xs-1 d-none d-xxl-block"
-                    style="background-color:#914E59; font-size:1rem;">Редактирай профил</a>
-            </div>
-        </div>
-    </section>
-
     <section class="container my-5">
-        <h1 class="col-12 d-flex justify-content-center fw-bold " style="font-size: 50px; padding: 0.5%;">Моите събития
+        <h1 id="accEventName" class="col-12 d-flex justify-content-center fw-bold "
+            style="font-size: 50px; padding: 0.5%;">Събитията на
         </h1>
         <p class="col-12 d-flex justify-content-center fs-5" style="text-align: center; padding: 2%;">Управлявайте
             своите резервации с лекота. Проследявайте, редактирайте или променяйте своите събития директно през личния
@@ -200,42 +235,45 @@
             <img src="./photos/logo1.png" style="width:200px;" alt="logo">
         </div>
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var userId = localStorage.getItem('userId');
-            var calendarEl = document.getElementById('calendar');
-
-            if (!userId) return; // Спираме, ако няма потребител (script.js ще го пренасочи)
-
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                locale: 'bg',
-                headerToolbar: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
-                },
-                // Зареждаме събитията директно от базата през PHP
-                events: 'php/GetEvent.php?userId=' + userId,
-
-                // Опция за добавяне на локално напомняне (само в браузъра)
-                selectable: true,
-                select: function (info) {
-                    var title = prompt('Лична бележка за ' + info.dateStr + ':');
-                    if (title) {
-                        calendar.addEvent({ title: title, start: info.dateStr, allDay: true });
-                    }
-                }
-            });
-
-            calendar.render();
-        });
-    </script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const userId = localStorage.getItem('userId');
+        const calendarEl = document.getElementById('calendar');
 
-    </script>
+        if (!userId || userId === "null") {
+            window.location.href = 'login.html';
+            return;
+        }
+
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            locale: 'bg', // Вече ще работи, защото добавихме скрипта в head
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek'
+            },
+            // Зареждаме събитията с userId
+            events: 'php/GetEvent.php?userId=' + userId,
+
+            displayEventTime: true,
+            eventTimeFormat: {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false
+            },
+            eventColor: '#914E59',
+
+            loading: function (isLoading) {
+                if (!isLoading) {
+                    console.log("Календарът е зареден успешно за потребител: " + userId);
+                }
+            }
+        });
+
+        calendar.render();
+    });
+</script>
 
 </html>

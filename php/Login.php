@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 }
 
 
-$log = $conn->prepare("SELECT id, email, password1 FROM users WHERE email = ?");
+$log = $conn->prepare("SELECT id, userName, email, password1 FROM users WHERE email = ?");
 
 if ($log) {
     $log->bind_param('s', $email);
@@ -29,8 +29,9 @@ if ($log) {
         if ($data['password1'] === $passowrd) {
             session_start();
             $_SESSION['id'] = $data['id'];
-            
-            echo json_encode(array("status" => "Success", "id" => $data['id']));
+            $_SESSION['userName'] = $data['userName'];
+
+            echo json_encode(array("status" => "Success", "id" => $data['id'], "userName" => $data['userName']));
         } else {
             echo json_encode(array("status" => "Error", "message" => "Wrong password"));
         }
