@@ -39,6 +39,7 @@
             background-color: #914E59 !important;
             border: none !important;
             padding: 2px 5px;
+            cursor: pointer;
         }
 
         .fc-toolbar-title {
@@ -82,7 +83,6 @@
         /* Основен стил за кутията на събитието */
         .fc-event {
             background-color: #914E59 !important;
-            /* Цвят Wine */
             border: none !important;
             border-radius: 4px !important;
             padding: 2px 5px !important;
@@ -104,7 +104,6 @@
         /* Стил за днешния ден в календара */
         .fc-day-today {
             background-color: rgba(145, 78, 89, 0.1) !important;
-            /* Светло винено за днешна дата */
         }
 
         /* Стил на бутоните на календара */
@@ -116,18 +115,36 @@
         .fc-button-primary:hover {
             background-color: #723d46 !important;
         }
+
+        /* Modal styling */
+        .modal-content {
+            border: none;
+            border-radius: 15px;
+        }
+
+        .btn-danger {
+            background-color: #d9534f;
+            border: none;
+        }
+
+        .btn-success {
+            background-color: #5cb85c;
+            border: none;
+        }
     </style>
 </head>
 
 <body>
-    <script>document.addEventListener('DOMContentLoaded', function () {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
             const userName = localStorage.getItem('userName');
             const accH = document.getElementById('accEventName');
 
             if (userName && accH) {
                 accH.innerText = "Събитията на " + userName + "!";
             }
-        });</script>
+        });
+    </script>
 
     <header class="bg-wine py-3">
         <div class="container-fluid d-flex justify-content-between align-items-center px-4">
@@ -207,10 +224,53 @@
             style="font-size: 50px; padding: 0.5%;">Събитията на
         </h1>
         <p class="col-12 d-flex justify-content-center fs-5" style="text-align: center; padding: 2%;">Управлявайте
-            своите резервации с лекота. Проследявайте, редактирайте или променяйте своите събития директно през личния
+            своите резервации с лекота. Проследявайте, редактирайте или премахнете своите събития директно през личния
             си календар.</p>
         <div id="calendar" class="shadow p-4 bg-white rounded"></div>
     </section>
+
+    <!-- Event Management Modal -->
+    <div class="modal fade" id="eventModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-wine text-white">
+                    <h5 class="modal-title">Управление на събитие</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="editEventId">
+                    <div class="mb-3">
+                        <label class="form-label">Вид събитие</label>
+                        <select id="editTitle" class="form-select">
+                            <option value="Среща за влюбени">Среща за влюбени</option>
+                            <option value="Вечер по женски">Вечер по женски</option>
+                            <option value="Събитие с приятели">Събитие с приятели</option>
+                            <option value="Семейно събитие">Семейно събитие</option>
+                            <option value="За малките художници">За малките художници</option>
+                            <option value="Работна среща">Работна среща</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Дата</label>
+                        <input type="date" id="editDate" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Час</label>
+                        <input type="time" id="editTime" class="form-control">
+                    </div>
+                    <div id="errorMessage" class="alert alert-danger d-none" role="alert"></div>
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                    <button type="button" class="btn btn-danger" id="deleteEventBtn">Изтрий</button>
+                    <div class="gap-2">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмени</button>
+                        <button type="button" class="btn btn-success" id="saveEditBtn">Запази промените</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer
         class="bg-wine text-light d-flex flex-column flex-md-row justify-content-between align-items-center px-4 py-4">
         <div class="text-center mb-3 mb-md-0">
@@ -236,7 +296,10 @@
         </div>
     </footer>
 </body>
+
 <script>
+    let calendar; // Global reference to calendar
+
     document.addEventListener('DOMContentLoaded', function () {
         const userId = localStorage.getItem('userId');
         const calendarEl = document.getElementById('calendar');
@@ -246,7 +309,7 @@
             return;
         }
 
-        const calendar = new FullCalendar.Calendar(calendarEl, {
+        calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
             locale: 'bg',
             headerToolbar: {
@@ -254,26 +317,124 @@
                 center: 'title',
                 right: 'dayGridMonth,timeGridWeek'
             },
-            // Зареждаме събитията от новия GetEvent.php
             events: 'php/GetEvent.php?userId=' + userId,
-
-            // Настройки за визуализация на часа върху самото събитие
             displayEventTime: true,
             eventTimeFormat: {
                 hour: '2-digit',
                 minute: '2-digit',
-                hour12: false // 24-часов формат
+                hour12: false
             },
             eventColor: '#914E59',
 
-            loading: function (isLoading) {
-                if (!isLoading) {
-                    console.log("Календарът е зареден успешно за потребител: " + userId);
-                }
+            // Логика при клик върху събитие
+            eventClick: function (info) {
+                const eventObj = info.event;
+
+                // Попълване на данните в модала
+                $('#editEventId').val(eventObj.id);
+                $('#editTitle').val(eventObj.title);
+
+                const start = eventObj.start;
+                const datePart = start.toISOString().split('T')[0];
+                const timePart = start.toTimeString().split(' ')[0].substring(0, 5);
+
+                $('#editDate').val(datePart);
+                $('#editTime').val(timePart);
+
+                // Очисти грешките от предишния път
+                $('#errorMessage').addClass('d-none').text('');
+
+                // Показване на модала
+                const myModal = new bootstrap.Modal(document.getElementById('eventModal'));
+                myModal.show();
             }
         });
 
         calendar.render();
+
+        // ===== DELETE EVENT =====
+        $('#deleteEventBtn').click(function () {
+            if (confirm("Сигурни ли сте, че искате да изтриете тази резервация?")) {
+                const eventId = $('#editEventId').val();
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'php/DeleteEvent.php',
+                    data: { id: eventId },
+                    dataType: 'json',
+                    success: function (res) {
+                        if (res.status === 'Success') {
+                            // Close the modal
+                            const myModal = bootstrap.Modal.getInstance(document.getElementById('eventModal'));
+                            myModal.hide();
+
+                            // Refresh calendar
+                            calendar.refetchEvents();
+
+                            alert("Резервацията е изтрита успешно!");
+                        } else {
+                            showError(res.message || "Грешка при изтриване!");
+                        }
+                    },
+                    error: function (xhr) {
+                        console.error('Delete error:', xhr);
+                        showError("Техническа грешка при изтриване!");
+                    }
+                });
+            }
+        });
+
+        // ===== UPDATE EVENT =====
+        $('#saveEditBtn').click(function () {
+            const eventId = $('#editEventId').val();
+            const title = $('#editTitle').val();
+            const date = $('#editDate').val();
+            const time = $('#editTime').val();
+
+            // Validation
+            if (!date || !time) {
+                showError("Моля, попълнете дата и час!");
+                return;
+            }
+
+            const data = {
+                id: eventId,
+                title: title,
+                date: date,
+                time: time
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: 'php/UpdateEvent.php',
+                data: data,
+                dataType: 'json',
+                success: function (res) {
+                    if (res.status === 'Success') {
+                        // Close the modal
+                        const myModal = bootstrap.Modal.getInstance(document.getElementById('eventModal'));
+                        myModal.hide();
+
+                        // Refresh calendar
+                        calendar.refetchEvents();
+
+                        alert("Промените са запазени успешно!");
+                    } else {
+                        showError(res.message || "Грешка при обновяване!");
+                    }
+                },
+                error: function (xhr) {
+                    console.error('Update error:', xhr);
+                    showError("Техническа грешка при обновяване!");
+                }
+            });
+        });
+
+        // Helper function to show errors
+        function showError(message) {
+            const errorEl = $('#errorMessage');
+            errorEl.text(message).removeClass('d-none');
+        }
     });
 </script>
 
