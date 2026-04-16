@@ -8,7 +8,7 @@
     <title>Акаунт</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;700;800&display=swap" rel="stylesheet">
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.10/locales/bg.global.min.js"></script>
 
@@ -248,20 +248,21 @@
 
         const calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
-            locale: 'bg', // Вече ще работи, защото добавихме скрипта в head
+            locale: 'bg',
             headerToolbar: {
                 left: 'prev,next today',
                 center: 'title',
                 right: 'dayGridMonth,timeGridWeek'
             },
-            // Зареждаме събитията с userId
+            // Зареждаме събитията от новия GetEvent.php
             events: 'php/GetEvent.php?userId=' + userId,
 
+            // Настройки за визуализация на часа върху самото събитие
             displayEventTime: true,
             eventTimeFormat: {
                 hour: '2-digit',
                 minute: '2-digit',
-                hour12: false
+                hour12: false // 24-часов формат
             },
             eventColor: '#914E59',
 
