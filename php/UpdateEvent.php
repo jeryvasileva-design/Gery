@@ -2,46 +2,39 @@
 header('Content-Type: application/json; charset=utf-8');
 date_default_timezone_set('Europe/Sofia');
 
-// Връзка с базата данни
 $conn = new mysqli('localhost', 'root', '', 'winepainting');
 $conn->set_charset("utf8mb4");
 
 if ($conn->connect_error) {
-    echo json_encode(['status' => 'Error', 'message' => 'Връзката с базата данни пропадна.']);
+    echo json_encode(['status' => 'Error', 'message' => 'Грешка при връзка с базата: ' . $conn->connect_error]);
     exit;
 }
 
-// Приемане на данни от POST заявката
 $id    = isset($_POST['id']) ? intval($_POST['id']) : 0;
 $title = isset($_POST['title']) ? trim($_POST['title']) : '';
 $date  = isset($_POST['date']) ? $_POST['date'] : '';
 $time  = isset($_POST['time']) ? $_POST['time'] : '';
 
-// 1. Валидация за празни полета
 if ($id <= 0 || empty($title) || empty($date) || empty($time)) {
     echo json_encode(['status' => 'Error', 'message' => 'Всички полета са задължителни.']);
     exit;
 }
 
-// 2. Валидация на формата на часа (приема HH:mm или HH:mm:ss)
 if (!preg_match('/^\d{2}:\d{2}(:\d{2})?$/', $time)) {
     echo json_encode(['status' => 'Error', 'message' => 'Невалиден формат на часа.']);
     exit;
 }
 
-// Уверяваме се, че имаме секунди за MySQL (HH:mm:ss)
 $timeWithSeconds = (strlen($time) == 5) ? $time . ':00' : $time;
 
-// 3. Критична проверка: Забрана за местене в миналото
 $currentDate = date('Y-m-d');
 $currentTime = date('H:i:s');
 
 if ($date < $currentDate || ($date == $currentDate && $timeWithSeconds <= $currentTime)) {
-    echo json_encode(['status' => 'Error', 'message' => 'Не можете да местите събитие в миналото.']);
+    echo json_encode(['status' => 'Error', 'message' => 'Изберете дата, който не е в миналото.']);
     exit;
 }
 
-// 4. Изпълнение на обновяването
 try {
     $stmt = $conn->prepare("UPDATE events SET title = ?, event_date = ?, event_time = ? WHERE id = ?");
     $stmt->bind_param("sssi", $title, $date, $timeWithSeconds, $id);

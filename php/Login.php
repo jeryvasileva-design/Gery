@@ -14,7 +14,6 @@ if ($conn->connect_error) {
     exit;
 }
 
-
 $log = $conn->prepare("SELECT id, userName, email, password1 FROM users WHERE email = ?");
 
 if ($log) {

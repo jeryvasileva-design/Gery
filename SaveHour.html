@@ -39,7 +39,6 @@
             border-radius: 6%;
         }
 
-        /* Logout Button Styles */
         #logoutBtn {
             font-family: 'Sofia Sans', sans-serif;
             font-weight: bold;
@@ -274,7 +273,6 @@
     const timeSelect = document.getElementById('eventTime');
     const timeOptions = document.querySelectorAll('.time-option');
 
-    // Ограничаваме календара до днешна дата
     const now = new Date();
     const todayStr = now.getFullYear() + '-' + 
                      String(now.getMonth() + 1).padStart(2, '0') + '-' + 
@@ -291,7 +289,7 @@
             const [optH, optM] = option.value.split(':').map(Number);
 
             if (selectedDate === todayStr) {
-                // Скриваме часовете, които вече са минали за днес
+              
                 if (optH < curH || (optH === curH && optM <= curM)) {
                     option.disabled = true;
                     option.style.display = 'none';
@@ -300,20 +298,17 @@
                     option.style.display = 'block';
                 }
             } else {
-                // За бъдещи дати всички часове са активни
+               
                 option.disabled = false;
                 option.style.display = 'block';
             }
         });
 
-        // Нулираме избора, ако текущо избраният час е вече невалиден
         if (timeSelect.selectedOptions[0] && timeSelect.selectedOptions[0].disabled) {
             timeSelect.value = "";
         }
     }
-
     dateInput.addEventListener('change', filterHours);
-    // Периодична проверка, ако потребителят стои дълго на страницата
     setInterval(filterHours, 30000); 
 </script>
 </html>

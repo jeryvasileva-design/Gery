@@ -34,7 +34,6 @@
             transition: 0.2s ease;
         }
 
-        /* Стилизиране на календара, за да пасва на темата */
         .fc-event {
             background-color: #914E59 !important;
             border: none !important;
@@ -80,7 +79,6 @@
             background-color: #92afb5;
         }
 
-        /* Основен стил за кутията на събитието */
         .fc-event {
             background-color: #914E59 !important;
             border: none !important;
@@ -88,7 +86,6 @@
             padding: 2px 5px !important;
         }
 
-        /* Прави заглавието и часа бели */
         .fc-event-title,
         .fc-event-time {
             color: #ffffff !important;
@@ -96,17 +93,15 @@
             font-family: 'Sofia Sans', sans-serif;
         }
 
-        /* Премахва синята точка, тъй като вече имаме фон на цялото събитие */
+
         .fc-daygrid-event-dot {
             display: none !important;
         }
 
-        /* Стил за днешния ден в календара */
         .fc-day-today {
             background-color: rgba(145, 78, 89, 0.1) !important;
         }
 
-        /* Стил на бутоните на календара */
         .fc-button-primary {
             background-color: #914E59 !important;
             border-color: #914E59 !important;
@@ -116,7 +111,6 @@
             background-color: #723d46 !important;
         }
 
-        /* Modal styling */
         .modal-content {
             border: none;
             border-radius: 15px;
@@ -320,10 +314,10 @@
             const editDateInput = document.getElementById('editDate');
             const editTimeSelect = document.getElementById('editTime');
 
-            // Ограничаваме датата да не е в миналото
+            // ne v minaloto
             editDateInput.setAttribute('min', new Date().toISOString().split('T')[0]);
 
-            // Логика за филтриране на часовете
+            //filter the hours
             function filterEditHours() {
                 const selectedDate = editDateInput.value;
                 const now = new Date();
@@ -357,7 +351,7 @@
                     $('#editTitle').val(ev.title);
                     
                     const dateStr = ev.start.toLocaleDateString('en-CA');
-                    const timeStr = ev.start.toTimeString().split(' ')[0]; // HH:mm:ss
+                    const timeStr = ev.start.toTimeString().split(' ')[0]; 
 
                     $('#editDate').val(dateStr);
                     filterEditHours();
@@ -369,7 +363,6 @@
             });
             calendar.render();
 
-            // ЗАПАЗВАНЕ НА ПРОМЕНИТЕ
             $('#saveEditBtn').click(function () {
                 const updateData = {
                     id: $('#editEventId').val(),
@@ -396,7 +389,6 @@
                 });
             });
 
-            // ИЗТРИВАНЕ
             $('#deleteEventBtn').click(function () {
                 if(confirm("Сигурни ли сте?")) {
                     $.ajax({
@@ -412,5 +404,4 @@
             });
         });
     </script>
-
 </html>

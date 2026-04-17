@@ -1,26 +1,24 @@
 $(document).ready(function () {
-
-    // === 1. ФУНКЦИЯ ЗА УПРАВЛЕНИЕ НА ВИДИМОСТТА ===
+//nav bar
     function updateNavigation() {
+
         let userId = localStorage.getItem('userId');
         const isLoggedIn = userId && userId !== "null" && userId !== "undefined" && userId !== "";
 
-        // Селектираме елементите едновременно по ID и по КЛАС
         const profileLinks = $('#acc, .nav-acc');
         const saveHourLinks = $('#save, .nav-save');
         const logoutBtns = $('#logoutBtn, .logoutBtn');
 
-        // Намираме всички линкове за Регистрация (<a> сочи към login.html)
         const registrationLinks = $('a[href="login.html"]').parent();
 
         if (isLoggedIn) {
-            // АКО Е ВЛЯЗЪЛ:
+        
             profileLinks.removeClass('d-none').show();
             saveHourLinks.removeClass('d-none').show();
             logoutBtns.removeClass('d-none').show();
             registrationLinks.addClass('d-none').hide();
         } else {
-            // АКО НЕ Е ВЛЯЗЪЛ:
+          
             profileLinks.addClass('d-none').hide();
             saveHourLinks.addClass('d-none').hide();
             logoutBtns.addClass('d-none').hide();
@@ -30,7 +28,7 @@ $(document).ready(function () {
 
     updateNavigation();
 
-    // === 2. ЛОГИКА ЗА ВХОД ===
+//login
     $('#login').submit(function (e) {
         e.preventDefault();
         $.ajax({
@@ -57,15 +55,15 @@ $(document).ready(function () {
         });
     });
 
-    // === 3. ЛОГИКА ЗА ИЗХОД ===
+//logout
     $(document).on('click', '#logoutBtn, .logoutBtn', function (e) {
         e.preventDefault();
-        localStorage.clear(); // Чисти всичко (userId, userName)
+        localStorage.clear(); 
         updateNavigation();
         window.location.href = 'index.html';
     });
 
-    // === 4. ЛОГИКА ЗА РЕГИСТРАЦИЯ ===
+//registration
     $('#registation').submit(function (e) {
         e.preventDefault();
         $.ajax({
@@ -83,7 +81,7 @@ $(document).ready(function () {
         });
     });
 
-    // === 5. ЗАПАЗВАНЕ НА ЧАС (SaveHour.html) ===
+//saveHour
     $('#eventForm').submit(function (e) {
         e.preventDefault();
         const userId = localStorage.getItem('userId');
@@ -94,7 +92,6 @@ $(document).ready(function () {
             return;
         }
 
-        // Поставяме ID-то в скрития input
         $('#userIdInput').val(userId);
 
         let formData = $(this).serialize();
@@ -107,7 +104,7 @@ $(document).ready(function () {
             success: function (response) {
                 if (response.status === 'Success') {
                     alert("Часът е запазен успешно!");
-                    window.location.href = 'account.html'; // Пренасочване към профила с календара
+                    window.location.href = 'account.html';
                 } else {
                     alert("Грешка: " + response.message);
                 }

@@ -7,7 +7,7 @@ $conn->set_charset("utf8mb4");
 
 if ($conn->connect_error) {
     http_response_code(500);
-    echo json_encode(['error' => 'Връзката с базата данни пропадна: ' . $conn->connect_error]);
+    echo json_encode(['error' => 'Грешка при връзка с базата: ' . $conn->connect_error]);
     exit;
 }
 
@@ -20,8 +20,6 @@ if ($userId <= 0) {
 }
 
 try {
-    // ВАЖНО: Вече взимаме и колоната 'id' която е необходима за CRUD операциите
-    // Също взимаме всички полета, за да можем да покажем информация в модала при редактиране
     $sql = "SELECT 
                 id,
                 title,
@@ -54,8 +52,6 @@ try {
         $events[] = $row;
     }
 
-    // За FullCalendar трябват само id, title, start полета
-    // Но е хубаво да имаме и другите данни достъпни за по-детайлиран модал
     echo json_encode($events, JSON_UNESCAPED_UNICODE);
 
     $stmt->close();

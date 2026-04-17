@@ -7,14 +7,13 @@ $conn->set_charset("utf8mb4");
 
 if ($conn->connect_error) {
     http_response_code(500);
-    echo json_encode(['status' => 'Error', 'message' => 'Грешка при връзка с базата.']);
+    echo json_encode(['status' => 'Error', 'message' => 'Грешка с връзка с базата.']);
     exit;
 }
 
-// Проверка на метода на заявката
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
-    echo json_encode(['status' => 'Error', 'message' => 'Невалиден метод на заявка.']);
+    echo json_encode(['status' => 'Error', 'message' => 'Невалидна заявка.']);
     exit;
 }
 
@@ -36,7 +35,7 @@ try {
             echo json_encode(['status' => 'Success', 'message' => 'Резервацията е изтрита успешно.']);
         } else {
             http_response_code(404);
-            echo json_encode(['status' => 'Error', 'message' => 'Събитието не бе намерено.']);
+            echo json_encode(['status' => 'Error', 'message' => 'Събитието не е намерено.']);
         }
     } else {
         throw new Exception($stmt->error);
