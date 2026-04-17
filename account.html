@@ -229,7 +229,6 @@
         <div id="calendar" class="shadow p-4 bg-white rounded"></div>
     </section>
 
-    <!-- Event Management Modal -->
     <div class="modal fade" id="eventModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -256,7 +255,22 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Час</label>
-                        <input type="time" id="editTime" class="form-control">
+                        <select id="editTime" class="form-select border-wine">
+                            <option value="" disabled>Избери час...</option>
+                            <option class="edit-time-option" value="09:00:00">09:00</option>
+                            <option class="edit-time-option" value="10:00:00">10:00</option>
+                            <option class="edit-time-option" value="11:00:00">11:00</option>
+                            <option class="edit-time-option" value="12:00:00">12:00</option>
+                            <option class="edit-time-option" value="13:00:00">13:00</option>
+                            <option class="edit-time-option" value="14:00:00">14:00</option>
+                            <option class="edit-time-option" value="15:00:00">15:00</option>
+                            <option class="edit-time-option" value="16:00:00">16:00</option>
+                            <option class="edit-time-option" value="17:00:00">17:00</option>
+                            <option class="edit-time-option" value="18:00:00">18:00</option>
+                            <option class="edit-time-option" value="19:00:00">19:00</option>
+                            <option class="edit-time-option" value="20:00:00">20:00</option>
+                            <option class="edit-time-option" value="21:00:00">21:00</option>
+                        </select>
                     </div>
                     <div id="errorMessage" class="alert alert-danger d-none" role="alert"></div>
                 </div>
@@ -298,144 +312,105 @@
 </body>
 
 <script>
-    let calendar; // Global reference to calendar
+        document.addEventListener('DOMContentLoaded', function () {
+            const userId = localStorage.getItem('userId');
+            if (!userId) { window.location.href = 'login.html'; return; }
 
-    document.addEventListener('DOMContentLoaded', function () {
-        const userId = localStorage.getItem('userId');
-        const calendarEl = document.getElementById('calendar');
+            const calendarEl = document.getElementById('calendar');
+            const editDateInput = document.getElementById('editDate');
+            const editTimeSelect = document.getElementById('editTime');
 
-        if (!userId || userId === "null") {
-            window.location.href = 'login.html';
-            return;
-        }
+            // Ограничаваме датата да не е в миналото
+            editDateInput.setAttribute('min', new Date().toISOString().split('T')[0]);
 
-        calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth',
-            locale: 'bg',
-            headerToolbar: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'dayGridMonth,timeGridWeek'
-            },
-            events: 'php/GetEvent.php?userId=' + userId,
-            displayEventTime: true,
-            eventTimeFormat: {
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: false
-            },
-            eventColor: '#914E59',
+            // Логика за филтриране на часовете
+            function filterEditHours() {
+                const selectedDate = editDateInput.value;
+                const now = new Date();
+                const todayStr = now.toISOString().split('T')[0];
+                const curH = now.getHours();
+                const curM = now.getMinutes();
 
-            // Логика при клик върху събитие
-            eventClick: function (info) {
-                const eventObj = info.event;
-
-                // Попълване на данните в модала
-                $('#editEventId').val(eventObj.id);
-                $('#editTitle').val(eventObj.title);
-
-                const start = eventObj.start;
-                const datePart = start.toISOString().split('T')[0];
-                const timePart = start.toTimeString().split(' ')[0].substring(0, 5);
-
-                $('#editDate').val(datePart);
-                $('#editTime').val(timePart);
-
-                // Очисти грешките от предишния път
-                $('#errorMessage').addClass('d-none').text('');
-
-                // Показване на модала
-                const myModal = new bootstrap.Modal(document.getElementById('eventModal'));
-                myModal.show();
-            }
-        });
-
-        calendar.render();
-
-        // ===== DELETE EVENT =====
-        $('#deleteEventBtn').click(function () {
-            if (confirm("Сигурни ли сте, че искате да изтриете тази резервация?")) {
-                const eventId = $('#editEventId').val();
-
-                $.ajax({
-                    type: 'POST',
-                    url: 'php/DeleteEvent.php',
-                    data: { id: eventId },
-                    dataType: 'json',
-                    success: function (res) {
-                        if (res.status === 'Success') {
-                            // Close the modal
-                            const myModal = bootstrap.Modal.getInstance(document.getElementById('eventModal'));
-                            myModal.hide();
-
-                            // Refresh calendar
-                            calendar.refetchEvents();
-
-                            alert("Резервацията е изтрита успешно!");
+                Array.from(editTimeSelect.options).forEach(option => {
+                    const [optH, optM] = option.value.split(':').map(Number);
+                    if (selectedDate === todayStr) {
+                        if (optH < curH || (optH === curH && optM <= curM)) {
+                            option.disabled = true; option.style.display = 'none';
                         } else {
-                            showError(res.message || "Грешка при изтриване!");
+                            option.disabled = false; option.style.display = 'block';
                         }
-                    },
-                    error: function (xhr) {
-                        console.error('Delete error:', xhr);
-                        showError("Техническа грешка при изтриване!");
+                    } else {
+                        option.disabled = false; option.style.display = 'block';
                     }
                 });
             }
-        });
 
-        // ===== UPDATE EVENT =====
-        $('#saveEditBtn').click(function () {
-            const eventId = $('#editEventId').val();
-            const title = $('#editTitle').val();
-            const date = $('#editDate').val();
-            const time = $('#editTime').val();
+            editDateInput.addEventListener('change', filterEditHours);
 
-            // Validation
-            if (!date || !time) {
-                showError("Моля, попълнете дата и час!");
-                return;
-            }
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'bg',
+                events: 'php/GetEvent.php?userId=' + userId,
+                eventClick: function (info) {
+                    const ev = info.event;
+                    $('#editEventId').val(ev.id);
+                    $('#editTitle').val(ev.title);
+                    
+                    const dateStr = ev.start.toLocaleDateString('en-CA');
+                    const timeStr = ev.start.toTimeString().split(' ')[0]; // HH:mm:ss
 
-            const data = {
-                id: eventId,
-                title: title,
-                date: date,
-                time: time
-            };
+                    $('#editDate').val(dateStr);
+                    filterEditHours();
+                    $('#editTime').val(timeStr);
 
-            $.ajax({
-                type: 'POST',
-                url: 'php/UpdateEvent.php',
-                data: data,
-                dataType: 'json',
-                success: function (res) {
-                    if (res.status === 'Success') {
-                        // Close the modal
-                        const myModal = bootstrap.Modal.getInstance(document.getElementById('eventModal'));
-                        myModal.hide();
+                    $('#errorMessage').addClass('d-none');
+                    new bootstrap.Modal(document.getElementById('eventModal')).show();
+                }
+            });
+            calendar.render();
 
-                        // Refresh calendar
-                        calendar.refetchEvents();
+            // ЗАПАЗВАНЕ НА ПРОМЕНИТЕ
+            $('#saveEditBtn').click(function () {
+                const updateData = {
+                    id: $('#editEventId').val(),
+                    title: $('#editTitle').val(),
+                    date: $('#editDate').val(),
+                    time: $('#editTime').val()
+                };
 
-                        alert("Промените са запазени успешно!");
-                    } else {
-                        showError(res.message || "Грешка при обновяване!");
-                    }
-                },
-                error: function (xhr) {
-                    console.error('Update error:', xhr);
-                    showError("Техническа грешка при обновяване!");
+                $.ajax({
+                    type: 'POST',
+                    url: 'php/UpdateEvent.php',
+                    data: updateData,
+                    dataType: 'json',
+                    success: function (res) {
+                        if (res.status === 'Success') {
+                            bootstrap.Modal.getInstance(document.getElementById('eventModal')).hide();
+                            calendar.refetchEvents();
+                            alert("Промените са записани!");
+                        } else {
+                            $('#errorMessage').text(res.message).removeClass('d-none');
+                        }
+                    },
+                    error: function() { alert("Грешка при връзка със сървъра."); }
+                });
+            });
+
+            // ИЗТРИВАНЕ
+            $('#deleteEventBtn').click(function () {
+                if(confirm("Сигурни ли сте?")) {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'php/DeleteEvent.php',
+                        data: { id: $('#editEventId').val() },
+                        success: function () {
+                            bootstrap.Modal.getInstance(document.getElementById('eventModal')).hide();
+                            calendar.refetchEvents();
+                        }
+                    });
                 }
             });
         });
-
-        // Helper function to show errors
-        function showError(message) {
-            const errorEl = $('#errorMessage');
-            errorEl.text(message).removeClass('d-none');
-        }
-    });
-</script>
+    </script>
 
 </html>
